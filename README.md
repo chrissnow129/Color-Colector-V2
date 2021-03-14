@@ -2,9 +2,6 @@
 
 ### App Demo: www.linkegoeshere.com
 
----
-![Alt Text](https://media.giphy.com/media/l3q2wCnKRThy8ltxS/giphy.gif)
-
 
 
 ## Concept:
