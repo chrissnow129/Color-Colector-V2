@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import Delete from 'delete';
 
 export default function Tweets(props){
 
@@ -15,6 +16,7 @@ export default function Tweets(props){
             console.log(err)
         } 
     }
+<<<<<<< HEAD
 )()}, [] )
 
 
@@ -44,4 +46,36 @@ export default function Tweets(props){
 
         </>
     )
+=======
+)()}, [])
+
+
+
+return (
+    <>
+    <div>
+        {
+            props.tweets.map(item => {
+                return (
+                    <>
+                    <ul>
+                    <li>Post Title: {item.title}</li>
+                    <li>Content: {item.content}</li>
+                    <li>Author: {item.author}</li>
+                    <li>Created At: {item.created_at}</li>
+                    <li>Updated At: {item.updated_at}</li>
+                    </ul>
+                    <div>
+                    <Delete/>
+                    </div>
+                    </>
+                );
+            })
+        }
+    </div>
+
+
+    </>
+)
+>>>>>>> 2c5fac3ab541d62dab5699007b789a43ba83e2c9
 }
