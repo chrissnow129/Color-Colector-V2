@@ -30,7 +30,7 @@ const handleSubmit = async e => {
     return (
         <>
         <form className='flex flex-col' onSubmit={handleSubmit}>
-            <div className='w-40 m-auto'>
+            <div className='w-40 h-5 m-auto'>
             <input className='border-2 border-white bg-transparent rounded-lg py-1.5' type="text" placeholder="Title" ref={titleInput}/>
             <input className='border-2 border-white bg-transparent rounded-lg my-3 py-1.5' type="text" placeholder="Author" ref={authorInput}/>
             <input className='border-2 border-white bg-transparent rounded-lg mb-3 py-1.5' type="text" placeholder="What's happening?" ref={contentInput}/>
