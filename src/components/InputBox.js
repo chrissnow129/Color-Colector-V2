@@ -22,10 +22,12 @@ const handleSubmit = async e => {
             })
         });
         const data = await response.json();
-        props.setTweets([...props.tweets, data]);
+        console.log(data)
+        props.setTweets([...props.tweets, data.tweet]);
     } catch(error) {
         console.error(error);
     }
+    console.log(props.tweets)
 }
     return (
         <>
