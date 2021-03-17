@@ -34,6 +34,7 @@ export default function Tweets(props){
                         <li>Updated At: {item.updated_at}</li>
                         </ul>
                         {/* DELETE BUTTON GOES HERE */}
+                        <br/>
                         </>
                     );
                 })
