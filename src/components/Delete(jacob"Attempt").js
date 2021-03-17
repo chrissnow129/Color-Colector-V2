@@ -11,13 +11,15 @@ const deleteTweet = useState = async (e) => {
         method: "DELETE",
         headers: {
           "Content-type": "application/json",
-        },
-        // body: JSON.stringify(tweet)
+        }
       }
     );
+
     const data = await response.json();
   } catch (error) {
     console.error(error);
+  } finally {
+    window.location.assign('/')
   }
 })
 }
