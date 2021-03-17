@@ -1,8 +1,13 @@
+import React, { useState } from 'react';
 import './App.css';
 import Tweets from './components/Tweets';
 import InputBox from './components/InputBox';
 
+
+
 function App() {
+  const [tweets, setTweets] = useState([]);
+
   return (
     <>
     <div className="header">
@@ -11,8 +16,8 @@ function App() {
       </header>
     </div>
     <div className="input-box">
-      <InputBox></InputBox>
-      <Tweets></Tweets>
+      <InputBox tweets={tweets} setTweets={setTweets}></InputBox>
+      <Tweets tweets={tweets} setTweets={setTweets}></Tweets>
 
     </div>
     <div className="twitter-posts">
