@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import Delete from 'delete';
+// import Delete from './Delete';
 
 export default function Tweets(props){
 
@@ -33,9 +33,9 @@ return (
                     <li>Author: {item.author}</li>
                     <li>Created At: {item.created_at}</li>
                     <li>Updated At: {item.updated_at}</li>
-                    </ul>
+                    </ul> <br/>
                     <div>
-                    <Delete/>
+                    {/* <Delete/> */}
                     </div>
                     </>
                 );
