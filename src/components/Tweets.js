@@ -33,7 +33,7 @@ export default function Tweets(props){
                         <li>Created At: {item.created_at}</li>
                         <li>Updated At: {item.updated_at}</li>
                         </ul>
-                        {/* DELETE BUTTON GOES HERE */}
+                        <div className="del-button">Delete</div>
                         </>
                     );
                 })
