@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 export default function Tweets(props){
 
-    const [tweets, setTweets] = useState([]);
+   
 
     useEffect( () => {
         (async () => {
@@ -10,7 +10,7 @@ export default function Tweets(props){
             const res = await fetch('https://tweet-backend-api.herokuapp.com/tweets')
             const data = await res.json()
             console.log(data)
-            await setTweets(data);
+            await props.setTweets(data);
         } catch (err) {
             console.log(err)
         } 
@@ -23,7 +23,7 @@ export default function Tweets(props){
         <>
         <div>
             {
-                tweets.map(item => {
+                props.tweets.map(item => {
                     return (
                         <>
                         <ul>
