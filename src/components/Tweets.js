@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Delete from 'delete';
 
 export default function Tweets(props){
 
@@ -19,28 +20,30 @@ export default function Tweets(props){
 
 
 
-    return (
-        <>
-        <div>
-            {
-                tweets.map(item => {
-                    return (
-                        <>
-                        <ul>
-                        <li>Post Title: {item.title}</li>
-                        <li>Content: {item.content}</li>
-                        <li>Author: {item.author}</li>
-                        <li>Created At: {item.created_at}</li>
-                        <li>Updated At: {item.updated_at}</li>
-                        </ul>
-                        <div className="del-button">Delete</div>
-                        </>
-                    );
-                })
-            }
-        </div>
+return (
+    <>
+    <div>
+        {
+            props.tweets.map(item => {
+                return (
+                    <>
+                    <ul>
+                    <li>Post Title: {item.title}</li>
+                    <li>Content: {item.content}</li>
+                    <li>Author: {item.author}</li>
+                    <li>Created At: {item.created_at}</li>
+                    <li>Updated At: {item.updated_at}</li>
+                    </ul>
+                    <div>
+                    <Delete/>
+                    </div>
+                    </>
+                );
+            })
+        }
+    </div>
 
 
-        </>
-    )
+    </>
+)
 }
