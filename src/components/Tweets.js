@@ -3,7 +3,7 @@ import Delete from 'delete';
 
 export default function Tweets(props){
 
-    const [tweets, setTweets] = useState([]);
+   
 
     useEffect( () => {
         (async () => {
@@ -11,12 +11,12 @@ export default function Tweets(props){
             const res = await fetch('https://tweet-backend-api.herokuapp.com/tweets')
             const data = await res.json()
             console.log(data)
-            await setTweets(data);
+            await props.setTweets(data);
         } catch (err) {
             console.log(err)
         } 
     }
-)()}, [] )
+)()}, [])
 
 
 
