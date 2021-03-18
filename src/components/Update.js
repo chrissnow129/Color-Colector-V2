@@ -1,27 +1,17 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 
 export default function Update(props) {
-    const [tweet, setTweet] = useSate({});
+    const [tweet, setTweet] = useState({});
     const titleInput = useRef(null);
     const contentInput = useRef(null);
     const authorInput = useRef(null)
 
-    useEffect(() => {
-		(async () => {
-			try {
-				const response = await fetch(`https://tweet-backend-api.herokuapp.com/${props.match.params.id}`);
-				const data = await response.json();
-				setTweet(data);
-			} catch (error) {
-				console.error(error);
-			}
-		})();
-	}, [tweet]);
 
     const handleUpdate = async e => {
         e.preventDefault();
+        console.log(props.post.id)
         try {
-            const response = await fetch(`https://tweet-backend-api.herokuapp.com/${props.match.params.id}`, {
+            const response = await fetch(`https://tweet-backend-api.herokuapp.com/tweets/${props.post.id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
@@ -36,6 +26,8 @@ export default function Update(props) {
             setTweet(data);
         } catch (error) {
             console.error(error);
+        } finally {
+            window.location.assign('/')
         }
     };
 
@@ -43,16 +35,17 @@ export default function Update(props) {
         <form onSubmit={handleUpdate}>
             <label>
                 Title:
-                 <input type="text" ref={titleInput} defaultValue={tweet.title} />
+                 <input type="text" ref={titleInput} defaultValue={props.title} />
             </label>
             <label>
                 Content:
-                 <input type="text" ref={contentInput} defaultValue={tweet.content} />
+                 <input type="text" ref={contentInput} defaultValue={props.content} />
             </label>
             <label>
                 Author:
-                 <input type="text" ref={authorInput} defaultValue={tweet.author} />
+                 <input type="text" ref={authorInput} defaultValue={props.author} />
             </label>
+            <input type="submit" value="Submit" />
        </form>
     )
 }
