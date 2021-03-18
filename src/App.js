@@ -9,7 +9,7 @@ function App() {
   const [tweets, setTweets] = useState([]);
 
   return (
-    <body className='h-screen' style={{background:'linear-gradient(128deg, rgba(250,240,190,1) 0%, rgba(221,255,223,1) 61%, rgba(190,255,243,1) 100%)'
+    <body className='h-screen overflow-auto' style={{background:'linear-gradient(128deg, rgba(250,240,190,1) 0%, rgba(221,255,223,1) 61%, rgba(190,255,243,1) 100%)'
     }}>
     <div className="">
       <header className="">
