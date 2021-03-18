@@ -2,14 +2,14 @@ import React from 'react';
 export default function Delete(props) {
 
     const handleDelete = async e => {
+        console.log(props.post.id)
         try {
-            const response = await fetch(`https://tweet-backend-api.herokuapp.com/${props.match.params.id}`, {
+            const response = await fetch(`https://tweet-backend-api.herokuapp.com/tweets/${props.post.id}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json'
                 }
             });
-            const data = await response.json();
         } catch (error) {
             console.error(error);
         } finally {

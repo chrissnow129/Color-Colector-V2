@@ -1,51 +1,57 @@
-import React, { useEffect } from 'react';
-// import Delete from './Delete';
+import React, { useEffect } from "react";
+import Update from "./Update";
+import Delete from "./Delete";
 
-export default function Tweets(props){
+export default function Tweets(props) {
+  useEffect(() => {
+    (async () => {
+      try {
+        const res = await fetch(
+          "https://tweet-backend-api.herokuapp.com/tweets"
+        );
+        const data = await res.json();
+        console.log(data);
+        await props.setTweets(data);
+      } catch (err) {
+        console.log(err);
+      }
+    })();
+  }, []);
 
+  function sortByDate_1(records) {
+    const data = records.map((ele, index) => {
+      const obj = Object.assign({}, ele);
+      if (ele.id != null) {
+        obj.counter = index + 1;
+      } else {
+        obj.counter = 0;
+      }
+      return obj;
+    });
+    return data.sort((a, b) => b.counter - a.counter);
+  }
+    
    
 
-    useEffect( () => {
-        (async () => {
-        try {
-            const res = await fetch('https://tweet-backend-api.herokuapp.com/tweets')
-            const data = await res.json()
-            console.log(data)
-            await props.setTweets(data);
-        } catch (err) {
-            console.log(err)
-        } 
-    }
-)()}, [])
-
-
-
-return (
+  return (
     <>
-    <div>
-        {
-            props.tweets.map(item => {
-                return (
-                    <>
-                    <div className='bg-green-400 text-center mb-12 w-1/4'>
-                    <ul className='bg-white'>
-                    <li>Post Title: {item.title}</li>
-                    <li>Content: {item.content}</li>
-                    <li>Author: {item.author}</li>
-                    <li>Created At: {item.created_at}</li>
-                    <li>Updated At: {item.updated_at}</li>
-                    </ul>
-                    </div> <br/>
-                    <div>
-                    {/* <Delete/> */}
-                    </div>
-                    </>
-                );
-            })
-        }
-    </div>
-
-
+      <div>
+        {sortByDate_1(props.tweets).map((item) => {
+          return (
+            <>
+              <ul>
+                <li>Post Title: {item.title}</li>
+                <li>Content: {item.content}</li>
+                <li>Author: {item.author}</li>
+                <li>Created At: {item.created_at}</li>
+                <li>Updated At: {item.updated_at}</li>
+                <Update post={item} />
+                <Delete post={item} />
+              </ul>
+            </>
+          );
+        })}
+      </div>
     </>
-)
+  );
 }
