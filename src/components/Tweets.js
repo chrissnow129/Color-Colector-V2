@@ -18,10 +18,25 @@ export default function Tweets(props) {
     })();
   }, []);
 
+  function sortByDate_1(records) {
+    const data = records.map((ele, index) => {
+      const obj = Object.assign({}, ele);
+      if (ele.id != null) {
+        obj.counter = index + 1;
+      } else {
+        obj.counter = 0;
+      }
+      return obj;
+    });
+    return data.sort((a, b) => b.counter - a.counter);
+  }
+    
+   
+
   return (
     <>
       <div>
-        {props.tweets.map((item) => {
+        {sortByDate_1(props.tweets).map((item) => {
           return (
             <>
               <ul>
@@ -30,11 +45,9 @@ export default function Tweets(props) {
                 <li>Author: {item.author}</li>
                 <li>Created At: {item.created_at}</li>
                 <li>Updated At: {item.updated_at}</li>
-                      <Update post={item} />
-                      <Delete post={item} />
+                <Update post={item} />
+                <Delete post={item} />
               </ul>
-
-              <div></div>
             </>
           );
         })}
