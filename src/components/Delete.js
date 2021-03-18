@@ -18,7 +18,7 @@ export default function Delete(props) {
     };
     
     return (
-        <div>
+        <div className='border-2 border-white text-white bg-transparent rounded-full px-4 py-1 w-32 ml-12 text-center'>
         <button onClick={handleDelete}> Delete </button> 
         </div>
     )

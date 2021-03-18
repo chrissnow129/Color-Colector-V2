@@ -9,10 +9,10 @@ function App() {
   const [tweets, setTweets] = useState([]);
 
   return (
-    <body style={{background:'linear-gradient(128deg, rgba(250,240,190,1) 0%, rgba(221,255,223,1) 61%, rgba(190,255,243,1) 100%)'
+    <body className='h-full' style={{background:'linear-gradient(128deg, rgba(250,240,190,1) 0%, rgba(221,255,223,1) 61%, rgba(190,255,243,1) 100%)'
     }}>
-    <div className="header">
-      <header className="App-header">
+    <div className="">
+      <header className="">
        <img className='m-auto'
        src='https://cdn4.iconfinder.com/data/icons/neon-social-icons-set/256/social_media_icons_neon_set_256x256_0002_twitter.png' alt=''></img>
       </header>

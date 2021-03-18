@@ -32,20 +32,17 @@ export default function Update(props) {
     };
 
     return (
-        <form onSubmit={handleUpdate}>
+        <form className='flex flex-col py-3' onSubmit={handleUpdate}>
             <label>
-                Title:
-                 <input type="text" ref={titleInput} defaultValue={props.title} />
+                 <input className='border-2 border-white bg-transparent rounded-lg mb-2.5 px-2 py-1.5' type="text" placeholder='Title' ref={titleInput} defaultValue={props.title} />
             </label>
             <label>
-                Content:
-                 <input type="text" ref={contentInput} defaultValue={props.content} />
+                 <input className='border-2 border-white bg-transparent rounded-lg my-2.5 px-2 py-1.5' type="text" placeholder='Content' ref={contentInput} defaultValue={props.content} />
             </label>
             <label>
-                Author:
-                 <input type="text" ref={authorInput} defaultValue={props.author} />
+                 <input className='border-2 border-white bg-transparent rounded-lg my-3 px-2 py-1.5' type="text" placeholder='Author' ref={authorInput} defaultValue={props.author} />
             </label>
-            <input type="submit" value="Submit" />
+            <input  className='border-2 border-white text-white bg-transparent rounded-full px-4 py-1 w-32 ml-12' type="submit" value="Submit" />
        </form>
     )
 }
