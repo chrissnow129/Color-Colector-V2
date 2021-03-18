@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 
 export default function Update(props) {
     const [tweet, setTweet] = useState({});
@@ -6,22 +6,12 @@ export default function Update(props) {
     const contentInput = useRef(null);
     const authorInput = useRef(null)
 
-    useEffect(() => {
-		(async () => {
-			try {
-				const response = await fetch(`https://tweet-backend-api.herokuapp.com/${props.match.params.id}`);
-				const data = await response.json();
-				setTweet(data);
-			} catch (error) {
-				console.error(error);
-			}
-		})();
-	}, [tweet]);
 
     const handleUpdate = async e => {
         e.preventDefault();
+        console.log(props.post.id)
         try {
-            const response = await fetch(`https://tweet-backend-api.herokuapp.com/${props.match.params.id}`, {
+            const response = await fetch(`https://tweet-backend-api.herokuapp.com/tweets/${props.post.id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
@@ -36,23 +26,23 @@ export default function Update(props) {
             setTweet(data);
         } catch (error) {
             console.error(error);
+        } finally {
+            window.location.assign('/')
         }
     };
 
     return (
-        <form onSubmit={handleUpdate}>
+        <form className='flex flex-col py-3' onSubmit={handleUpdate}>
             <label>
-                Title:
-                 <input type="text" ref={titleInput} defaultValue={tweet.title} />
+                 <input className='border-2 border-white bg-transparent rounded-lg mb-2.5 px-2 py-1.5' type="text" placeholder='Title' ref={titleInput} defaultValue={props.title} />
             </label>
             <label>
-                Content:
-                 <input type="text" ref={contentInput} defaultValue={tweet.content} />
+                 <input className='border-2 border-white bg-transparent rounded-lg my-2.5 px-2 py-1.5' type="text" placeholder='Content' ref={contentInput} defaultValue={props.content} />
             </label>
             <label>
-                Author:
-                 <input type="text" ref={authorInput} defaultValue={tweet.author} />
+                 <input className='border-2 border-white bg-transparent rounded-lg my-3 px-2 py-1.5' type="text" placeholder='Author' ref={authorInput} defaultValue={props.author} />
             </label>
+            <input  className='border-2 border-white text-white bg-transparent rounded-full px-4 py-1 w-32 ml-12' type="submit" value="Submit" />
        </form>
     )
 }

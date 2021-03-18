@@ -31,11 +31,11 @@ const handleSubmit = async e => {
 }
     return (
         <>
-        <form className='flex flex-col' onSubmit={handleSubmit}>
-            <div className='w-40 h-5 m-auto'>
-            <input className='border-2 border-white bg-transparent rounded-lg py-1.5' type="text" placeholder="Title" ref={titleInput}/>
-            <input className='border-2 border-white bg-transparent rounded-lg my-3 py-1.5' type="text" placeholder="Author" ref={authorInput}/>
-            <input className='border-2 border-white bg-transparent rounded-lg mb-3 py-1.5' type="text" placeholder="What's happening?" ref={contentInput}/>
+        <form className='flex flex-col h-40 my-36' onSubmit={handleSubmit}>
+            <div className='w-40 h-5 m-auto '>
+            <input className='border-2 border-white bg-transparent rounded-lg px-2 py-1.5' type="text" placeholder="Title" ref={titleInput}/>
+            <input className='border-2 border-white bg-transparent rounded-lg px-2 my-3 py-1.5' type="text" placeholder="Author" ref={authorInput}/>
+            <input className='border-2 border-white bg-transparent rounded-lg px-2 mb-3 py-1.5' type="text" placeholder="What's happening?" ref={contentInput}/>
             <input className='border-2 border-white text-white bg-transparent rounded-full px-4 py-1' type="submit" value="Tweet"/>
             </div>
         </form>
