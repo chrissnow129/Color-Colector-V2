@@ -41,7 +41,7 @@ export default function Update(props) {
   return (
     <div>
       <button
-        className="border-2 border-white text-white bg-transparent rounded-full px-4 py-1 w-56 mx-auto mb-2 hover:bg-white hover:text-blue-200"
+        className="border-2 border-white text-white bg-transparent rounded-full px-4 py-1 w-56 mx-auto mb-2 hover:bg-white hover:text-blue-200 hover:shadow-lg hover:transition duration-200"
         onClick={hideUpdate}
       >
         Update the tweet
@@ -79,7 +79,7 @@ export default function Update(props) {
           />
         </label>
         <input
-          className="border-2 border-white text-white bg-transparent rounded-full px-4 py-1 w-32 ml-12 hover:bg-white hover:text-blue-200"
+          className="border-2 border-white text-white bg-transparent rounded-full px-4 py-1 w-32 ml-12 hover:bg-white hover:text-blue-200 hover:shadow-lg hover:transition duration-200"
           type="submit"
           value="Submit"
         />

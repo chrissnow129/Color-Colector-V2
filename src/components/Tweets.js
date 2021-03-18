@@ -38,7 +38,7 @@ export default function Tweets(props) {
       <div>
         {sortByDate_1(props.tweets).map((item) => {
           return (
-            <div style={{backgroundColor:'rgba(217, 250, 255, 0.5)'}} className='inline-flex flex-row flex-wrap justify-center ml-10 mb-10 w-1/4 p-2 rounded-2xl text-white shadow-md'>
+            <div style={{backgroundColor:'rgba(217, 250, 255, 0.5)'}} className='inline-flex flex-row flex-wrap justify-center mx-10 mb-10 w-1/4 p-2 rounded-2xl text-white shadow-md'>
               <ul>
                 <li class='font-semibold text-lg'>Post Title: {item.title}</li>
                 <li>Content: {item.content}</li> 

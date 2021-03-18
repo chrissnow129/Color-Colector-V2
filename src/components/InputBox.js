@@ -36,7 +36,7 @@ const handleSubmit = async e => {
             <input className='border-2 border-white bg-transparent rounded-lg px-2 py-1.5' type="text" placeholder="Title" ref={titleInput}/>
             <input className='border-2 border-white bg-transparent rounded-lg px-2 my-3 py-1.5' type="text" placeholder="Author" ref={authorInput}/>
             <input className='border-2 border-white bg-transparent rounded-lg px-2 mb-3 py-1.5' type="text" placeholder="What's happening?" ref={contentInput}/>
-            <input className='border-2 border-white text-white bg-transparent rounded-full px-4 py-1 hover:bg-white hover:text-gray-200' type="submit" value="Tweet"/>
+            <input className='border-2 border-white text-white bg-transparent rounded-full px-4 py-1 hover:bg-white hover:text-gray-200 hover:shadow-lg hover:transition duration-200' type="submit" value="Tweet"/>
             </div>
         </form>
         </>
