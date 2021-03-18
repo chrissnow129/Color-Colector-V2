@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 export default function Update(props) {
-    const [tweet, setTweet] = useSate({});
+    const [tweet, setTweet] = useState({});
     const titleInput = useRef(null);
     const contentInput = useRef(null);
     const authorInput = useRef(null)
