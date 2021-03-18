@@ -46,7 +46,7 @@ export default function Tweets(props) {
                 <li>Created At: {item.created_at}</li>
                 <li>Updated At: {item.updated_at}</li>
                 <Update post={item} />
-                <Delete post={item} />
+                <Delete post={item} /> <br/>
               </ul>
             </>
           );
