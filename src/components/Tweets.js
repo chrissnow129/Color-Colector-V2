@@ -41,10 +41,10 @@ export default function Tweets(props) {
             <div style={{backgroundColor:'rgba(88, 225, 246, 0.6)'}} className='inline-flex sm:flex-col flex-wrap justify-center mx-10 my-5 w-1/4 p-2 rounded-2xl text-white shadow-md'>
               <ul>
                 <li class='font-semibold text-lg text-center'>{item.title}</li>
-                <li>{item.content}</li> 
-                <li><span className='font-semibold'>Author: </span>{item.author}</li>
-                <li class='text-sm font-thin'>Created At: {item.created_at}</li>
-                <li class='text-sm font-thin'>Updated At: {item.updated_at}</li>
+                <li class='ml-5'>{item.content}</li> 
+                <li class='ml-5'><span className='font-semibold'>Author: </span>{item.author}</li>
+                <li class='ml-5 text-xs font-thin'>Created At: {item.created_at}</li>
+                <li class='ml-5 text-xs font-thin'>Updated At: {item.updated_at}</li>
                 <Update post={item} />
                 <Delete post={item} /> <br/>
               </ul>

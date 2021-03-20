@@ -41,7 +41,7 @@ export default function Update(props) {
   return (
     <div>
       <button
-        className="border-2 border-white text-white bg-transparent rounded-full px-4 py-1 w-44 mx-8 mb-2 hover:bg-white hover:text-blue-200 hover:shadow-lg hover:transition duration-200"
+        className="border-2 border-white bg-transparent text-white rounded-full px-4 py-1 w-44 ml-16 my-2.5 hover:bg-white hover:text-blue-200 hover:shadow-lg hover:transition duration-200"
         onClick={hideUpdate}
       >
         Update the tweet
@@ -53,7 +53,7 @@ export default function Update(props) {
       >
         <label>
           <input
-            className="border-2 border-white bg-transparent rounded-lg mx-auto mb-2.5 px-2 py-1.5"
+            className="border-2 border-white rounded-lg bg-transparent ml-10 mb-2.5 px-2 py-1.5"
             type="text"
             placeholder="Title"
             ref={titleInput}
@@ -62,7 +62,7 @@ export default function Update(props) {
         </label>
         <label>
           <input
-            className="border-2 border-white bg-transparent rounded-lg my-2.5 px-2 py-1.5"
+            className="border-2 border-white bg-transparent rounded-lg ml-10 my-2.5 px-2 py-1.5"
             type="text"
             placeholder="Content"
             ref={contentInput}
@@ -71,7 +71,7 @@ export default function Update(props) {
         </label>
         <label>
           <input
-            className="border-2 border-white bg-transparent rounded-lg my-3 px-2 py-1.5"
+            className="border-2 border-white bg-transparent rounded-lg ml-10 my-3 px-2 py-1.5"
             type="text"
             placeholder="Author"
             ref={authorInput}
@@ -79,7 +79,7 @@ export default function Update(props) {
           />
         </label>
         <input
-          className="border-2 border-white text-white bg-transparent rounded-full px-4 py-1 w-32 ml-12 hover:bg-white hover:text-blue-200 hover:shadow-lg hover:transition duration-200"
+          className="border-2 border-white text-white bg-transparent rounded-full px-4 py-1 w-32 ml-20 hover:bg-white hover:text-blue-200 hover:shadow-lg hover:transition duration-200"
           type="submit"
           value="Submit"
         />
