@@ -41,14 +41,14 @@ export default function Update(props) {
   return (
     <div>
       <button
-        className="border-2 border-white text-white bg-transparent rounded-full px-4 py-1 w-56 mx-auto mb-2 hover:bg-white hover:text-blue-200 hover:shadow-lg hover:transition duration-200"
+        className="border-2 border-white text-white bg-transparent rounded-full px-4 py-1 w-44 mx-8 mb-2 hover:bg-white hover:text-blue-200 hover:shadow-lg hover:transition duration-200"
         onClick={hideUpdate}
       >
         Update the tweet
       </button>
       <form
         className="flex flex-col py-3"
-        style={hidden ? { display: "flex" } : { display: "none" }}
+        style={hidden ? { display: "flex", transition: 'display 3s' } : { display: "none", transition: 'display 3s' }}
         onSubmit={handleUpdate}
       >
         <label>
