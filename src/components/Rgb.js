@@ -74,14 +74,16 @@ export default function Rgb(props) {
 	return (
 		<div>
 			<form
-				className="flex flex-col justify-center my-8 mx-auto text-white w-1/4 h-28 bg-transparent border-3 border-green-100 rounded-xl shadow-md"
+				style={{boxShadow:'1px 1px 5px 0px rgba(0,0,0,0.1)'}}
+				className="flex flex-col justify-center my-8 pt-5 mx-auto text-white w-1/4 h-28 bg-transparent border-3 border-green-100 rounded-xl"
 				onSubmit={handleSubmit}
 			>
-				<div>
-					<label className="my-auto ml-5">
-						<span className='font-bold text-lg'>RGB Value:{' '}</span>
+				<div className='my-3'>
+					<label className="ml-10">
+						<span className='font-bold pl-4 text-lg'>RGB Value:{' '}</span>
 						<input
-							className="bg-transparent shadow-inner mt-5 rounded-lg h-7"
+							style={{boxShadow:'1px 1px 5px 0px rgba(0,0,0,0.1)inset'}}
+							className="bg-transparent ml-10 rounded-lg h-7"
 							type="text"
 							onChange={handleChange}
 							value={query.rgb}
@@ -89,14 +91,14 @@ export default function Rgb(props) {
 						/>
 					</label>{' '}
 				</div>
-				<br />
+				
 				<input
-					className="w-32 mx-auto mb-2 rounded-bl-2xl h-10 rounded-tr-2xl bg-transparent hover:shadow-xl hover:transition duration-300 ease-in-out"
+					className="w-32 mx-auto mb-8 border-2 rounded-bl-2xl h-10 rounded-tr-2xl bg-transparent hover:shadow-xl hover:transition duration-300 ease-in-out"
 					type="submit"
 					value="Get this Color"
 				/>
 			</form>
-			<div className="grid gap-3 grid-cols-4">
+			<div className="grid grid-cols-4 ml-7">
 				{rgbLst.map(rgb2 => {
 					return (
 						<div>
@@ -105,7 +107,7 @@ export default function Rgb(props) {
 								style={{
 									backgroundColor: `rgba(${rgb2.rgb.r}, ${rgb2.rgb.g}, ${rgb2.rgb.b}, 0.3)`
 								}}
-								className="flex flex-col justify-center mt-auto w-56 h-64 rounded-xl shadow-md"
+								className="flex flex-col justify-center mb-6 w-56 h-64 rounded-xl shadow-md"
 							>
 								<h1 className="text-center text-xl pt-2 text-white">
 									{rgb2.name.value}
