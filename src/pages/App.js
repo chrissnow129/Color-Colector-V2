@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import Rgb from "./components/Rgb";
+import Rgb from "../components/Rgb";
+import Nav from '../components/Nav';
 
 export default function App() {
   ////////// FOR RANDOM SINGLE COLORS ///////////
 
   const [color, setColor] = useState();
-  const [open, setOpen] = useState(false);
 
   const fetchColor = async () => {
     const r = Math.floor(Math.random() * 256);
@@ -28,10 +28,6 @@ export default function App() {
     fetchColor();
   }, []);
 
-  const openClose = () => {
-    setOpen(!open);
-  };
-
   return (
     <html
       className="h-screen overflow-x-hidden overflow-y-auto"
@@ -48,26 +44,12 @@ export default function App() {
           id="title"
           className="relative top-40 left-1/3 w-1/3 text-8xl font-bold tracking-wider text-yellow-50"
         >
-          Color
+          Colorrr
           <br /> Collector
         </h1>
-        <div>
-          <input type="checkbox" className="hidden" id="navi-toggle" />
-          <label
-            for="navi-toggle"
-            id="navigation__button"
-            onClick={openClose}
-            className="bg-yellow-50 h-14 w-14 fixed top-8 left-8 rounded-full shadow-xl"
-          >
-            <span style={{ marginTop: "5rem" }} id="navigation__icon"></span>
-          </label>
-          {/* <button onClick={openClose} className='bg-yellow-50 h-14 w-14 fixed top-8 left-8 rounded-full shadow-xl'><span style={{marginLeft:'.65rem', marginTop:'4.9rem'}} className="hover:bg-green-300" id='navigation__icon'></span></button> */}
-        </div>
+        <Nav/>
       </header>
       <body>
-        <div className="bg-green-300 bg-opacity-50 hidden absolute -top-0 h-screen w-96">
-          <nav></nav>
-        </div>
         <div>
           {color ? (
             <div
@@ -86,13 +68,13 @@ export default function App() {
                 RGB Value: {color.rgb.r}, {color.rgb.g}, {color.rgb.b}
               </h3>
               <img
-                className="m-auto rounded-3xl hover:shadow-xl hover:transition duration-300 ease-in-out"
+                className="m-auto rounded-3xl hover:shadow-xl hover:transition-shadow duration-300 ease-in-out"
                 src={color.image.bare}
                 alt=""
               />
               <button
                 id="getcolor"
-                className="m-auto mt-2 w-32 h-9 rounded-tl-2xl border-2 rounded-br-2xl text-white hover:shadow-xl hover:bg-purple-300 hover:transition duration-300 ease-in-out outline-none"
+                className="m-auto mt-2 w-32 h-9 rounded-tl-2xl border-2 rounded-br-2xl text-white hover:shadow-xl hover:bg-purple-700 hover:transition-shadow duration-300 ease-in-out outline-none"
                 style={{
                   borderColor: `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, 0.3)`,
                 }}

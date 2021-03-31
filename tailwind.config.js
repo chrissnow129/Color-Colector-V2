@@ -1,8 +1,19 @@
+const colors = require('@tailwindcss/postcss7-compat/colors')
+
 module.exports = {
   purge: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        orange: colors.orange,
+        amber: colors.amber,
+        emerald: colors.emerald,
+        teal: colors.teal,
+        cyan: colors.cyan,
+        indigo: colors.indigo
+      }
+    },
   },
   variants: {
     extend: {},

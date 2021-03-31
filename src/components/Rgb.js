@@ -107,7 +107,7 @@ export default function Rgb(props) {
 								style={{
 									backgroundColor: `rgba(${rgb2.rgb.r}, ${rgb2.rgb.g}, ${rgb2.rgb.b}, 0.3)`
 								}}
-								className="flex flex-col justify-center mb-6 w-56 h-64 rounded-xl shadow-md"
+								className="flex flex-col justify-center relative mb-6 w-56 h-64 rounded-xl shadow-md"
 							>
 								<h1 className="text-center text-xl pt-2 text-white">
 									{rgb2.name.value}
