@@ -75,7 +75,7 @@ export default function Rgb(props) {
 		<div>
 			<form
 				style={{boxShadow:'1px 1px 5px 0px rgba(0,0,0,0.1)'}}
-				className="flex flex-col justify-center my-8 pt-5 mx-auto text-white w-1/4 h-28 bg-transparent border-3 border-green-100 rounded-xl"
+				className="flex flex-col justify-center my-8 pt-5 mx-auto text-white w-1/4 h-28 bg-white bg-opacity-20 border-3 border-green-100 rounded-xl"
 				onSubmit={handleSubmit}
 			>
 				<div className='my-3'>

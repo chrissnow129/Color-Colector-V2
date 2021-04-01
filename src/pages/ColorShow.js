@@ -58,6 +58,7 @@ export default function ColorShow(props) {
 						<img
 							className="m-auto rounded-3xl hover:shadow-xl hover:transition duration-300 ease-in-out"
 							src={color.image}
+							alt=''
 						/>
 						<button
 							className="m-auto mt-2 w-32 h-9 rounded-tl-2xl rounded-br-2xl text-white hover:shadow-xl hover:transition duration-300 ease-in-out outline-none"

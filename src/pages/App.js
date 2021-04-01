@@ -44,7 +44,7 @@ export default function App() {
           id="title"
           className="relative top-40 left-1/3 w-1/3 text-8xl font-bold tracking-wider text-yellow-50"
         >
-          Colorrr
+          Color
           <br /> Collector
         </h1>
         <Nav/>
@@ -54,17 +54,17 @@ export default function App() {
           {color ? (
             <div
               style={{
-                borderColor: `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, 0.3)`,
+                // borderColor: `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, 0.3)`,
               }}
-              className="flex flex-col justify-center border-4 mx-auto mt-64 w-1/4 h-64 rounded-xl shadow-md"
+              className="flex flex-col justify-center bg-white bg-opacity-20 mx-auto mt-64 w-1/4 h-64 rounded-xl shadow-md"
             >
-              <h1 className="text-center text-xl pt-2 text-white">
+              <h1 className="text-center text-xl pt-2 text-gray-300">
                 Name: {color.name.value}
               </h1>
-              <h3 className="text-center text-md text-white">
+              <h3 className="text-center text-md text-gray-300">
                 HEX Value: {color.hex.clean}
               </h3>
-              <h3 className="text-center text-md text-white">
+              <h3 className="text-center text-md text-gray-300">
                 RGB Value: {color.rgb.r}, {color.rgb.g}, {color.rgb.b}
               </h3>
               <img

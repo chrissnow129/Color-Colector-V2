@@ -1,4 +1,4 @@
-const colors = require('@tailwindcss/postcss7-compat/colors')
+const colors = require("@tailwindcss/postcss7-compat/colors");
 
 module.exports = {
   purge: [],
@@ -11,12 +11,13 @@ module.exports = {
         emerald: colors.emerald,
         teal: colors.teal,
         cyan: colors.cyan,
-        indigo: colors.indigo
-      }
+        indigo: colors.indigo,
+        fuchsia: colors.fuchsia,
+      },
     },
   },
   variants: {
     extend: {},
   },
   plugins: [],
-}
+};

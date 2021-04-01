@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import routes from '../router/routes'
+import { BrowserRouter as Router, Link } from 'react-router-dom'
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
@@ -15,16 +17,26 @@ export default function Nav() {
         id="navigation__button"
         onClick={openClose}
         style={{backgroundColor:'rgb(255,247,231)'}}
-        className="h-14 w-14 fixed top-8 right-8 rounded-full shadow-xl"
+        className="h-14 w-14 fixed top-8 right-8 rounded-full shadow-xl bg-opacity-40"
       >
         <span style={{ marginTop: "5rem" }} id="navigation__icon"></span>
       </label>
       {/* <button onClick={openClose} className='bg-yellow-50 h-14 w-14 fixed top-8 left-8 rounded-full shadow-xl'><span style={{marginLeft:'.65rem', marginTop:'4.9rem'}} className="hover:bg-green-300" id='navigation__icon'></span></button> */}
-    <nav className={open ? "bg-white bg-opacity-25 absolute rounded-tr-xl rounded-br-xl shadow-sm px-3 absolute -top-0 h-screen w-72" : 'hidden'}>
-      <ul>
+    <nav className={open ? "bg-white bg-opacity-25 absolute rounded-tr-3xl rounded-br-3xl shadow-sm py-32 absolute -top-0 h-screen w-72 transition duration-700 ease-in-out" : 'transition duration-700 ease-in-out transform -translate-x-36'}>
+    {routes
+							.filter(item => !item.path.includes(':'))
+							.map(({ key, path }) => (
+                <Router>
+								<Link class={open ? 'flex flex-cols ml-3 font-light text-white my-6 py-2 text-2xl rounded-t-xl rounded-b-md w-full transition duration-700 ease-in-out transform hover:translate-x-14' : ''} key={key} to={path}>
+									{key}
+								</Link>
+                </Router>
+							))}
+
+      {/* <ul>
         <li class='text-center font-light text-white mt-48 py-2 text-2xl rounded-t-xl rounded-b-md w-full hover:bg-cyan-200'><a href='##'>Home</a></li>
-        <li class='text-center font-light text-white my-2 py-2 text-2xl bg-pink-200'><a href='##'>Saved Colors</a></li>
-      </ul>
+        <li class='text-center font-light text-white my-2 py-2 text-2xl hover:bg-cyan-200'><a href='##'>Saved Colors</a></li>
+      </ul> */}
     </nav>
     </div>
   );
