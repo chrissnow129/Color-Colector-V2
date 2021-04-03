@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Rgb from "../components/Rgb";
 import Nav from '../components/Nav';
 
-export default function App() {
+export default function Home() {
   ////////// FOR RANDOM SINGLE COLORS ///////////
 
   const [color, setColor] = useState();
@@ -30,7 +30,7 @@ export default function App() {
 
   return (
     <html
-      className="h-screen overflow-x-hidden overflow-y-auto"
+      className="h-screen overflow-auto"
       // Differnt gradients I was trying out
       // style={{ background: "linear-gradient(45deg, #FBDA61 0%, #FF5ACD 100%)" }}
       // style={{background: 'linear-gradient(219deg, rgba(105,48,195,1) 0%, rgba(78,168,222,1) 50%, rgba(128,255,219,1) 100%)'}}
@@ -58,7 +58,7 @@ export default function App() {
               }}
               className="flex flex-col justify-center bg-white bg-opacity-20 mx-auto mt-64 w-1/4 h-64 rounded-xl shadow-md"
             >
-              <h1 className="text-center text-xl pt-2 text-gray-300">
+              <h1 className="text-center font-semibold text-xl pt-2 text-gray-300">
                 Name: {color.name.value}
               </h1>
               <h3 className="text-center text-md text-gray-300">

@@ -43,7 +43,7 @@ export default function Rgb(props) {
 
 	const handleSave = async newColor => {
 		try {
-			const response = await fetch('/api/colors', {
+			const response = await fetch('/api/colorcol', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
@@ -107,13 +107,13 @@ export default function Rgb(props) {
 								style={{
 									backgroundColor: `rgba(${rgb2.rgb.r}, ${rgb2.rgb.g}, ${rgb2.rgb.b}, 0.3)`
 								}}
-								className="flex flex-col justify-center relative mb-6 w-56 h-64 rounded-xl shadow-md"
+								className="flex flex-col justify-center relative mb-6 w-48 h-48 rounded-xl shadow-md"
 							>
-								<h1 className="text-center text-xl pt-2 text-white">
+								<h1 className="text-center font-semibold text-xl py-2 text-white">
 									{rgb2.name.value}
 								</h1>
 								<img
-									className="m-auto rounded-3xl hover:shadow-xl hover:transition duration-300 ease-in-out"
+									className="m-auto rounded-3xl hover:shadow-2xl transform hover:-translate-y-2 hover:transition duration-300 ease-in-out"
 									src={rgb2.image.bare}
 									alt=''
 								/>
@@ -121,7 +121,7 @@ export default function Rgb(props) {
 									style={{
 										backgroundColor: `rgba(${rgb2.rgb.r}, ${rgb2.rgb.g}, ${rgb2.rgb.b}, 0.2)`
 									}}
-									className="m-auto my-3 w-32 h-9 rounded-tl-2xl rounded-br-2xl text-white hover:shadow-xl hover:transition duration-300 ease-in-out outline-none"
+									className="m-auto my-3 w-32 h-9 rounded-tl-2xl rounded-br-2xl text-white font-extralight text-sm hover:shadow-xl hover:transition duration-300 ease-in-out outline-none"
 									onClick={() => handleSave(rgb2)}
 								>
 									Save This Color

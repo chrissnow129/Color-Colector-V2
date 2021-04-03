@@ -9,7 +9,7 @@ export default function SavedColors(props) {
 		// Immediately Invoked Function Expression
 		(async () => {
 			try {
-				const response = await fetch('/api/colors');
+				const response = await fetch('/api/colorcol');
 				const data = await response.json();
 				console.log(data);
 				setRgbSaved(data);

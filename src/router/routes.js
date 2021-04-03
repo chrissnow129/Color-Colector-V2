@@ -1,7 +1,7 @@
 import React from 'react';
-import App from '../pages/App';
 import SavedColors from '../pages/SavedColors';
 import ColorShow from '../pages/ColorShow';
+import Home from '../pages/Home';
 
 const routes = [
 	{
@@ -15,7 +15,7 @@ const routes = [
 		path: '/:id'
 	},
 	{
-		Component: App,
+		Component: Home,
 		key: 'Home',
 		path: '/'
 	}

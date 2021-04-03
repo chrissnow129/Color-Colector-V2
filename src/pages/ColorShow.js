@@ -8,7 +8,7 @@ export default function ColorShow(props) {
 	useEffect(() => {
 		(async () => {
 			try {
-				const response = await fetch(`/api/colors/${props.match.params.id}`);
+				const response = await fetch(`/api/colorcol/${props.match.params.id}`);
 				const data = await response.json();
 				console.log(data);
 				setColorSh([data]);
@@ -20,7 +20,7 @@ export default function ColorShow(props) {
 
 	const handleDelete = async evt => {
 		try {
-			const response = await fetch(`/api/colors/${props.match.params.id}`, {
+			const response = await fetch(`/api/colorcol/${props.match.params.id}`, {
 				method: 'DELETE',
 				headers: {
 					'Content-Type': 'application/json'
