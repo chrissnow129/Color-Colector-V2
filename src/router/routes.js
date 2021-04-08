@@ -1,4 +1,3 @@
-import React from 'react';
 import SavedColors from '../pages/SavedColors';
 import ColorShow from '../pages/ColorShow';
 import Home from '../pages/Home';

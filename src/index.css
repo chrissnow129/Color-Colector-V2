@@ -2,6 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
+#vertical {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 500ms;
+}
+
+#show {
+    position: relative;
+    left: 25rem;
+    top: 20rem;
+}
+
+#light {
+    position: fixed;
+    left: 62rem;
+    top: 33px;
+}
+
+#dark {
+    position: fixed;
+    left: 62rem;
+    top: 33px;
+}
+
+#getcolor:hover{
+    opacity: 0;
+}
 
 #navigation__icon {
     position: absolute;

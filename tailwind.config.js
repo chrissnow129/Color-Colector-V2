@@ -1,7 +1,8 @@
 const colors = require("@tailwindcss/postcss7-compat/colors");
 
 module.exports = {
-  purge: [],
+  mode: "aot",
+  purge: ["./src/components/*.js", "./src/pages/*.js"],
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
@@ -17,7 +18,9 @@ module.exports = {
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      
+    },
   },
   plugins: [],
 };
