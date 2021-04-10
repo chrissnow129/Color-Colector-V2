@@ -54,13 +54,10 @@ export default function ColorShow(props) {
           >
             <div
               id="show"
-              style={{
-                borderColor: `rgba(${color.r}, ${color.g}, ${color.b}, 0.3)`,
-              }}
               className={
                 props.dark
-                  ? "flex flex-col justify-center w-1/3 h-1/3 border-4 bg-white bg-opacity-20 rounded-xl shadow-md text-white"
-                  : "flex flex-col justify-center w-1/3 h-1/3 border-4 bg-black bg-opacity-30 rounded-xl shadow-md text-white"
+                  ? "flex flex-col justify-center w-1/3 h-1/3 bg-white bg-opacity-20 rounded-xl shadow-md text-white"
+                  : "flex flex-col justify-center w-1/3 h-1/3 bg-black bg-opacity-30 rounded-xl shadow-md text-white"
               }
             >
               <h1
@@ -99,18 +96,26 @@ export default function ColorShow(props) {
               >
                 HSL Value: {color.h}, {color.s}, {color.l}
               </h3>
+              {props.dark ?
               <img
                 className="m-auto rounded-3xl hover:shadow-xl hover:transition duration-300 ease-in-out"
                 src={color.image}
                 alt=""
+              /> :
+              <img
+                style={{boxShadow: `1px 1px 5px 0px rgba(${color.r}, ${color.g}, ${color.b}, 2)`}}
+                className="m-auto rounded-3xl hover:shadow-xl hover:transition duration-300 ease-in-out"
+                src={color.image}
+                alt=""
               />
+      }
               <button
                 className={
                   props.dark
                     ? "m-auto mt-2 w-36 h-9 rounded-tl-2xl rounded-br-2xl text-white bg-transparent border-2 hover:shadow-xl hover:transition duration-300 ease-in-out outline-none"
                     : "m-auto mt-2 w-36 h-9 rounded-tl-2xl rounded-br-2xl text-gray-800 bg-transparent border-2 hover:shadow-xl hover:transition duration-300 ease-in-out outline-none"
                 }
-                style={{ borderColor: `${color.hex}` }}
+                style={props.dark ? { borderColor: `${color.hex}`} : { borderColor: `${color.hex}`, boxShadow: `1px 1px 5px 0px rgba(${color.r}, ${color.g}, ${color.b}, 2)`}}
                 onClick={handleDelete}
               >
                 Delete This Color

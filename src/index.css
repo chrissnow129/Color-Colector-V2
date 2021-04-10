@@ -2,10 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-#vertical {
-    transition-property: all;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 500ms;
+
+/* #schemetitle {
+    position: relative;
+    top: 11rem;
+    left: 33rem;
+} */
+
+#getcolor {
+    position: relative;
+    left: 12px;
+    top: 30px;
 }
 
 #show {
@@ -24,10 +31,6 @@
     position: fixed;
     left: 62rem;
     top: 33px;
-}
-
-#getcolor:hover{
-    opacity: 0;
 }
 
 #navigation__icon {

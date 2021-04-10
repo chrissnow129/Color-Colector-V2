@@ -13,7 +13,7 @@ const AppRouter = () => {
 		{dark ? (
           <button
             id="light"
-            class="bg-white w-14 h-14 py-2 rounded-full shadow-xl"
+            className="bg-white w-14 h-14 py-2 rounded-full shadow-xl"
             style={{ backgroundColor: "rgb(255,247,231)" }}
             onClick={darky}
           >

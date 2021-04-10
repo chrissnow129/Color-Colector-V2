@@ -24,13 +24,42 @@ export default function Home(props) {
     }
   };
 
+  const handleSave = async (newColor) => {
+    try {
+      const response = await fetch("/api/colorcol", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          hex: newColor.hex.value,
+          image: newColor.image.bare,
+          name: newColor.name.value,
+          r: newColor.rgb.r,
+          g: newColor.rgb.g,
+          b: newColor.rgb.b,
+          h: newColor.hsl.h,
+          s: newColor.hsl.s,
+          l: newColor.hsl.l,
+        }),
+      });
+      const data = await response.json();
+      console.log(response);
+      console.log(data);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      window.location.assign("/saved");
+    }
+  };
+
   useEffect(() => {
     fetchColor();
   }, []);
 
   return (
     <div
-      className="h-screen overflow-auto"
+      className="h-screen overflow-auto bg-repeat-y"
       // Differnt gradients I was trying out
       // style={{ background: "linear-gradient(45deg, #FBDA61 0%, #FF5ACD 100%)" }}
       // style={{background: 'linear-gradient(219deg, rgba(105,48,195,1) 0%, rgba(78,168,222,1) 50%, rgba(128,255,219,1) 100%)'}}
@@ -50,9 +79,12 @@ export default function Home(props) {
       <header>
         <h1
           id="title"
-          className={props.dark ? "relative top-40 left-1/3 w-1/3 text-8xl font-bold tracking-wider text-yellow-50" : 'relative top-40 left-1/3 w-1/3 text-8xl font-bold tracking-wider text-gray-800 text-opacity-60'}
+          className={
+            props.dark
+              ? "relative top-40 left-1/3 w-1/3 text-8xl font-bold tracking-wider text-yellow-50"
+              : "relative top-40 left-1/3 w-1/3 text-8xl font-bold tracking-wider text-gray-800 text-opacity-60"
+          }
         >
-          
           Color
           <br /> Collector
         </h1>
@@ -69,34 +101,75 @@ export default function Home(props) {
               }
               className={
                 props.dark
-                  ? "flex flex-col justify-center bg-white max-w-xl bg-opacity-20 mx-auto mt-64 w-1/4 h-64 rounded-xl shadow-md"
-                  : "flex flex-col justify-center bg-black max-w-xl bg-opacity-30 mx-auto mt-64 w-1/4 h-64 rounded-xl shadow-md"
+                  ? "flex flex-col justify-center bg-white max-w-xl bg-opacity-20 mx-auto mt-64 w-80 h-64 rounded-xl shadow-md"
+                  : "flex flex-col justify-center bg-black max-w-xl bg-opacity-30 mx-auto mt-64 w-80 h-64 rounded-xl shadow-md"
               }
             >
-              <h1 className={props.dark ? "text-center font-semibold text-xl pt-2 text-gray-300" : "text-center font-semibold text-xl pt-2 text-gray-700" }>
+              <h1
+                className={
+                  props.dark
+                    ? "text-center font-semibold text-xl pt-2 text-gray-300"
+                    : "text-center font-semibold text-xl pt-2 text-gray-700"
+                }
+              >
                 Name: {color.name.value}
               </h1>
-              <h3 className={props.dark ? "text-center text-md text-gray-300" : "text-center text-md text-gray-700"}>
+              <h3
+                className={
+                  props.dark
+                    ? "text-center text-md text-gray-300"
+                    : "text-center text-md text-gray-700"
+                }
+              >
                 HEX Value: {color.hex.clean}
               </h3>
-              <h3 className={props.dark ? "text-center text-md text-gray-300" : "text-center text-md text-gray-700"}>
+              <h3
+                className={
+                  props.dark
+                    ? "text-center text-md text-gray-300"
+                    : "text-center text-md text-gray-700"
+                }
+              >
                 RGB Value: {color.rgb.r}, {color.rgb.g}, {color.rgb.b}
               </h3>
               <img
+                style={
+                  props.dark
+                    ? {}
+                    : {
+                        boxShadow: `1px 1px 5px 0px rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, 2)`,
+                      }
+                }
                 className="m-auto animate-wiggle rounded-3xl hover:shadow-xl hover:transition-shadow duration-300 ease-in-out"
                 src={color.image.bare}
                 alt=""
               />
               <button
                 id="getcolor"
-                className="m-auto mt-2 w-32 h-9 rounded-tl-2xl border-2 rounded-br-2xl text-white hover:shadow-xl hover:bg-purple-700 hover:transition-shadow duration-300 ease-in-out outline-none"
-                style={{
-                  borderColor: `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, 0.3)`,
-                  backgroundColor: `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, 0)`,
-                }}
+                className="w-32 h-9 rounded-tl-2xl border-2 rounded-br-2xl text-white hover:shadow-xl hover:transition-shadow duration-300 ease-in-out"
+                style={
+                  props.dark
+                    ? {
+                        borderColor: `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, 0.3)`,
+                      }
+                    : {
+                        borderColor: `rgb(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b})`,
+                        filter: "brightness(110%) staturate(110%)",
+                        boxShadow: `1px 1px 5px 0px rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, 1.7)`,
+                      }
+                }
                 onClick={fetchColor}
               >
                 Get New Color
+              </button>
+              <button
+                onClick={() => handleSave(color)}
+                style={{
+                  borderColor: `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, 0.3)`,
+                }}
+                className="bg-transparent relative left-44 top-0 mb-3 border-2 border-white rounded-bl-2xl rounded-tr-2xl text-white bottom-52 w-32 h-9 hover:shadow-xl hover:transition-shadow duration-300 ease-in-out"
+              >
+                Save This Color
               </button>
             </div>
           ) : null}

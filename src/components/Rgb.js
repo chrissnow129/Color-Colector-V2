@@ -65,6 +65,8 @@ export default function Rgb(props) {
       console.log(data);
     } catch (error) {
       console.error(error);
+    } finally {
+      window.location.assign("/saved");
     }
   };
 
@@ -72,12 +74,14 @@ export default function Rgb(props) {
     updateQuery({ ...query, rgb: evt.target.value });
   };
 
-  const randKey = Math.floor(Math.random() * 300);
-
   return (
-    <div key={randKey}>
+    <div key="2389398">
       <form
-        style={{ boxShadow: "1px 1px 5px 0px rgba(0,0,0,0.2)" }}
+        style={
+          props.dark
+            ? { boxShadow: "1px 1px 5px 0px rgba(0,0,0,0.1)" }
+            : { boxShadow: "1px 1px 5px 0px rgba(0,0,0,0.3)" }
+        }
         className={
           props.dark
             ? "flex flex-col justify-center my-8 pt-5 mx-auto text-white w-52 h-28 bg-white bg-opacity-20 border-3 border-green-100 rounded-xl"
@@ -86,10 +90,12 @@ export default function Rgb(props) {
         onSubmit={handleSubmit}
       >
         <div className="my-3">
-          <label>
-            <span className="font-bold pl-4 text-lg"> </span>
             <input
-              style={{ boxShadow: "1px 1px 5px 0px rgba(0,0,0,0.1)inset" }}
+              style={
+                props.dark
+                  ? { boxShadow: "1px 1px 5px 0px rgba(0,0,0,0.125)inset" }
+                  : { boxShadow: "1px 1px 5px 0px rgba(0,0,0,0.2)inset" }
+              }
               className="bg-transparent relative left-1 rounded-lg h-7 placeholder-opacity-20"
               type="text"
               placeholder="RGB Value"
@@ -97,11 +103,10 @@ export default function Rgb(props) {
               value={query.rgb}
               ref={rgbRef}
             />
-          </label>{" "}
         </div>
 
         <input
-          className="w-32 mx-auto mb-8 border-2 rounded-bl-2xl h-10 rounded-tr-2xl bg-transparent hover:shadow-xl hover:transition duration-300 ease-in-out"
+          className="w-32 mx-auto mb-8 border-2 border-gray-300 rounded-bl-2xl h-10 rounded-tr-2xl bg-transparent hover:shadow-xl hover:transition duration-300 ease-in-out"
           type="submit"
           value="Get this Color"
         />
