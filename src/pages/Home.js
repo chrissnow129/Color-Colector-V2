@@ -164,9 +164,17 @@ export default function Home(props) {
               </button>
               <button
                 onClick={() => handleSave(color)}
-                style={{
-                  borderColor: `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, 0.3)`,
-                }}
+                style={
+                  props.dark
+                    ? {
+                        borderColor: `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, 0.3)`,
+                      }
+                    : {
+                        borderColor: `rgb(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b})`,
+                        filter: "brightness(110%) staturate(110%)",
+                        boxShadow: `1px 1px 5px 0px rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, 1.7)`,
+                      }
+                }
                 className="bg-transparent relative left-44 top-0 mb-3 border-2 border-white rounded-bl-2xl rounded-tr-2xl text-white bottom-52 w-32 h-9 hover:shadow-xl hover:transition-shadow duration-300 ease-in-out"
               >
                 Save This Color

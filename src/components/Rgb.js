@@ -90,23 +90,27 @@ export default function Rgb(props) {
         onSubmit={handleSubmit}
       >
         <div className="my-3">
-            <input
-              style={
-                props.dark
-                  ? { boxShadow: "1px 1px 5px 0px rgba(0,0,0,0.125)inset" }
-                  : { boxShadow: "1px 1px 5px 0px rgba(0,0,0,0.2)inset" }
-              }
-              className="bg-transparent relative left-1 rounded-lg h-7 placeholder-opacity-20"
-              type="text"
-              placeholder="RGB Value"
-              onChange={handleChange}
-              value={query.rgb}
-              ref={rgbRef}
-            />
+          <input
+            style={
+              props.dark
+                ? { boxShadow: "1px 1px 5px 0px rgba(0,0,0,0.125)inset" }
+                : { boxShadow: "1px 1px 5px 0px rgba(0,0,0,0.3)inset" }
+            }
+            className="bg-transparent relative left-5 rounded-lg h-7 placeholder-opacity-20"
+            type="text"
+            placeholder="RGB Value"
+            onChange={handleChange}
+            value={query.rgb}
+            ref={rgbRef}
+          />
         </div>
 
         <input
-          className="w-32 mx-auto mb-8 border-2 border-gray-300 rounded-bl-2xl h-10 rounded-tr-2xl bg-transparent hover:shadow-xl hover:transition duration-300 ease-in-out"
+          className={
+            props.dark
+              ? "w-32 mx-auto mb-8 border-2 border-gray-300 rounded-bl-2xl text-white h-10 rounded-tr-2xl bg-transparent hover:shadow-xl hover:transition duration-300 ease-in-out"
+              : "w-32 mx-auto mb-8 border-2 border-gray-700 rounded-bl-2xl h-10 text-gray-800 rounded-tr-2xl bg-transparent hover:shadow-xl hover:transition duration-300 ease-in-out"
+          }
           type="submit"
           value="Get this Color"
         />

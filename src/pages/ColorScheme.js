@@ -75,7 +75,11 @@ export default function ColorScheme(props) {
       </header>
       <div
         style={{ left: "27rem" }}
-        className="rounded-xl shadow-lg bg-white bg-opacity-20 absolute w-1/4 h-32 h-10 top-1/4"
+        className={
+          props.dark
+            ? "rounded-xl shadow-lg bg-white bg-opacity-20 absolute w-1/4 h-32 h-10 top-1/4"
+            : "rounded-xl shadow-lg bg-black bg-opacity-30 absolute w-1/4 h-32 h-10 top-1/4"
+        }
       >
         <form onSubmit={handleSubmit}>
           <input
@@ -92,7 +96,7 @@ export default function ColorScheme(props) {
             ref={schemeRef}
           />
           <input
-            className="w-32 ml-20 mt-14 border-2 border-gray-300 rounded-bl-2xl h-9 rounded-tr-2xl bg-transparent hover:shadow-xl hover:transition duration-300 ease-in-out"
+            className="w-32 ml-20 mt-14 border-2 border-gray-300 rounded-bl-2xl h-9 rounded-tr-2xl text-white bg-transparent hover:shadow-xl hover:transition duration-300 ease-in-out"
             type="submit"
             value="Get this Color"
           />
