@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { HashRouter as Router, Route, Switch } from 'react-router-dom';
+import { HashRouter, Route, Switch } from 'react-router-dom';
 import routes from './routes';
 const AppRouter = (props) => {
 	const [dark, setDark] = useState(true)
@@ -8,8 +8,7 @@ const AppRouter = (props) => {
 	return (
 		<>
 		
-		
-		<Router>
+		<HashRouter>
 			<Switch>
 				{routes.map(({ Component, key, path }) => (
 					<Route
@@ -19,7 +18,7 @@ const AppRouter = (props) => {
 					></Route>
 				))}
 			</Switch>
-		</Router>
+		</HashRouter>
 		</>
 	);
 };

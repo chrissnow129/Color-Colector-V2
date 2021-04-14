@@ -3,27 +3,25 @@ import routes from "../router/routes";
 import { Link } from "react-router-dom";
 
 export default function Nav(props) {
-  const [open, setOpen] = useState(false);
+  const [open, setOpenss] = useState(false);
 
   const openClose = () => {
-    setOpen(!open);
+    setOpenss(!open);
   };
 
   const randKeyNav = Math.floor(Math.random() * 300);
 
+
   return (
-    <div key={randKeyNav}>
+    <div id='nav' key={randKeyNav}>
       <input type="checkbox" className="hidden" id="navi-toggle" />
       <label
         htmlFor="navi-toggle"
         id="navigation__button"
         onClick={openClose}
         style={{ backgroundColor: "rgb(255,247,231)" }}
-<<<<<<< HEAD
         className="h-14 w-14 fixed top-5 right-8 rounded-full shadow-xl bg-opacity-40"
-=======
-        className="h-14 w-14 fixed top-8 right-8 rounded-full shadow-xl bg-opacity-40"
->>>>>>> e8ef3a83e3926ee46cc366ac0ced706994465649
+
       >
         <span
           style={{ marginTop: "5rem" }}

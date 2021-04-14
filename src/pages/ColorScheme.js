@@ -84,7 +84,7 @@ export default function ColorScheme(props) {
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-6 mx-auto w-6 transform hover:rotate-180 transition duration-500"
+              className="h-6 mx-auto w-6 transform hover:rotate-180 transition duration-500 focus:outline-none"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -100,12 +100,12 @@ export default function ColorScheme(props) {
         ) : (
           <button
             id="dark"
-            className="bg-gray-700 w-14 h-14 py-2 fixed rounded-full shadow-2xl"
+            className="bg-gray-700 w-14 h-14 py-2 fixed rounded-full shadow-2xl focus:outline-none"
             onClick={darky}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-6 mx-auto w-6 transform hover:rotate-180 transition duration-500"
+              className="h-6 mx-auto w-6 transform hover:rotate-180 transition duration-500 focus:outline-none"
               fill="none"
               viewBox="0 0 24 24"
               stroke="white"

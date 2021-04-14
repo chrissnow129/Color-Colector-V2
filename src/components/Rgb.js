@@ -75,7 +75,7 @@ export default function Rgb(props) {
   };
 
   return (
-    <div key="2389398">
+    <div key="238">
       <form
         style={
           props.dark
@@ -96,7 +96,7 @@ export default function Rgb(props) {
                 ? { boxShadow: "1px 1px 5px 0px rgba(0,0,0,0.125)inset" }
                 : { boxShadow: "1px 1px 5px 0px rgba(0,0,0,0.3)inset" }
             }
-            className="bg-transparent relative left-5 rounded-lg h-7 placeholder-opacity-20"
+            className="bg-transparent relative left-5 rounded-lg h-7 placeholder-opacity-20 focus:outline-none active:outline-none"
             type="text"
             placeholder="RGB Value"
             onChange={handleChange}
@@ -108,8 +108,8 @@ export default function Rgb(props) {
         <input
           className={
             props.dark
-              ? "w-32 mx-auto mb-8 border-2 border-gray-300 rounded-bl-2xl text-white h-10 rounded-tr-2xl bg-transparent hover:shadow-xl hover:transition duration-300 ease-in-out"
-              : "w-32 mx-auto mb-8 border-2 border-gray-700 rounded-bl-2xl h-10 text-gray-800 rounded-tr-2xl bg-transparent hover:shadow-xl hover:transition duration-300 ease-in-out"
+              ? "w-32 mx-auto mb-8 border-2 border-gray-300 rounded-bl-2xl text-white h-10 rounded-tr-2xl bg-transparent hover:shadow-xl hover:transition duration-300 ease-in-out focus:outline-none"
+              : "w-32 mx-auto mb-8 border-2 border-gray-700 rounded-bl-2xl h-10 text-gray-800 rounded-tr-2xl bg-transparent hover:shadow-xl hover:transition duration-300 ease-in-out focus:outline-none"
           }
           type="submit"
           value="Get this Color"
@@ -121,12 +121,12 @@ export default function Rgb(props) {
             <div>
               <div
                 key={rgb2.hex}
-                style={{
-                  backgroundColor: `rgba(${rgb2.rgb.r}, ${rgb2.rgb.g}, ${rgb2.rgb.b}, 0.3)`,
-                }}
+                style={props.dark ? {
+                  backgroundColor: `rgba(${rgb2.rgb.r}, ${rgb2.rgb.g}, ${rgb2.rgb.b}, 0.3)`
+                } : { backgroundColor: 'rgba(0, 0, 0, 0.3)' }}
                 className="flex flex-col justify-center relative mb-6 w-48 h-48 rounded-xl shadow-md"
               >
-                <h1 className="text-center font-semibold text-xl py-2 text-white">
+                <h1 className={props.dark ? "text-center font-semibold text-xl py-2 text-white" : "text-center font-semibold text-xl py-2 text-gray-800"}>
                   {rgb2.name.value}
                 </h1>
                 <img

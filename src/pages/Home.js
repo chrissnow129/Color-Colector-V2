@@ -96,7 +96,7 @@ export default function Home(props) {
         {props.dark ? (
           <button
             id="light"
-            className="bg-white w-14 h-14 py-2 rounded-full shadow-xl"
+            className="bg-white w-14 h-14 py-2 mr-6 rounded-full shadow-xl"
             style={{ backgroundColor: "rgb(255,247,231)" }}
             onClick={darky}
           >
@@ -194,7 +194,7 @@ export default function Home(props) {
               />
               <button
                 id="getcolor"
-                className="w-32 h-9 rounded-tl-2xl border-2 rounded-br-2xl text-white hover:shadow-xl hover:transition-shadow duration-300 ease-in-out"
+                className="w-32 h-9 rounded-tl-2xl border-2 rounded-br-2xl text-white hover:shadow-xl hover:transition-shadow duration-300 ease-in-out focus:outline-none"
                 style={
                   props.dark
                     ? {
@@ -225,7 +225,7 @@ export default function Home(props) {
                         color:'rgb(55, 65, 81)'
                       }
                 }
-                className="bg-transparent relative left-44 -top-3 border-2 border-white rounded-bl-2xl rounded-tr-2xl text-white bottom-52 w-32 h-9 hover:shadow-xl hover:transition-shadow duration-300 ease-in-out"
+                className="bg-transparent relative left-44 -top-3 border-2 border-white rounded-bl-2xl rounded-tr-2xl text-white bottom-52 w-32 h-9 hover:shadow-xl hover:transition-shadow duration-300 ease-in-out focus:outline-none"
               >
                 Save This Color
               </button>

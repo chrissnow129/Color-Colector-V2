@@ -3,11 +3,9 @@
 @tailwind utilities;
 
 
-/* #schemetitle {
-    position: relative;
-    top: 11rem;
-    left: 33rem;
-} */
+#nav {
+    transition: 2s;
+}
 
 #getcolor {
     position: relative;

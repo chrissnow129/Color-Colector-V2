@@ -3,12 +3,17 @@ const path = require("path");
 const { app, BrowserWindow } = require("electron");
 const isDev = require("electron-is-dev");
 
+
 function createWindow() {
   // Create the browser window.
   const win = new BrowserWindow({
-    width: 1184,
+    width: 1187,
     height: 883,
+<<<<<<< HEAD
+    titleBarStyle: "hiddenInset",
+=======
     titleBarStyle: 'hidden',
+>>>>>>> 89c99f95aa7418f2804f519a6844cc746ea1cc5a
     webPreferences: {
       nodeIntegration: true,
     },
@@ -23,9 +28,9 @@ function createWindow() {
   );
 
   // Open the DevTools.
-  if (isDev) {
-    win.webContents.openDevTools({ mode: "detach" });
-  }
+  // if (isDev) {
+  //   win.webContents.openDevTools({ mode: "detach" });
+  // }
 }
 
 // This method will be called when Electron has finished
