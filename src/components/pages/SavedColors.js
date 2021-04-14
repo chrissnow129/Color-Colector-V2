@@ -9,7 +9,7 @@ export default function SavedColors(props) {
     // Immediately Invoked Function Expression
     (async () => {
       try {
-        const response = await fetch("/api/colorcol");
+        const response = await fetch("https://colorcollecterv2.herokuapp.com/api/colorcol");
         const data = await response.json();
         console.log(data);
         setRgbSaved(data);

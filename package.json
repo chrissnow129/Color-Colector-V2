@@ -28,7 +28,7 @@
   "scripts": {
     "start": "react-scripts start",
     "start:craco": "craco start",
-    "dev": "concurrently -k \"BROWSER=none yarn start\" \"yarn:electron\"",
+    "dev": "concurrently -k \"BROWSER=none yarn start:craco\" \"yarn:electron\"",
     "electron": "wait-on tcp:3000 && electron-forge start",
     "build": "craco build",
     "test": "craco test",
@@ -55,6 +55,7 @@
     ]
   },
   "proxy": "https://colorcollecterv2.herokuapp.com/",
+  
   "devDependencies": {
     "@electron-forge/maker-deb": "^6.0.0-beta.54",
     "@electron-forge/maker-rpm": "^6.0.0-beta.54",
