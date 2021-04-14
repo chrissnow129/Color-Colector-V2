@@ -1,13 +1,71 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* #schemetitle {
+    position: relative;
+    top: 11rem;
+    left: 33rem;
+} */
+
+#getcolor {
+    position: relative;
+    left: 12px;
+    top: 16px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+#getcolor:focus {
+    outline: none;
 }
+
+#show {
+    position: relative;
+    left: 25rem;
+    top: 20rem;
+}
+
+#light {
+    position: fixed;
+    left: 65rem;
+    top: 22px;
+}
+
+#dark {
+    position: fixed;
+    left: 65rem;
+    top: 22px;
+}
+
+#navigation__icon {
+    position: absolute;
+    margin-top: 3.5rem;
+    right: 1rem;
+    top: -3.25rem;
+ }
+#navigation__icon, #navigation__icon::before, #navigation__icon::after {
+    width: 1.5rem;
+    height: .2rem;
+    background-color: black;
+    display: inline-block;
+    }
+#navigation__icon::before, #navigation__icon::after {
+    position: absolute;
+    content: "";
+    left: 0;
+    transition: all .2s;
+}
+#navigation__icon::before {
+    top: -.5rem;
+    }
+#navigation__icon::after {
+    top: .5rem
+    }
+
+#navigation__button:hover #navigation__icon::before {
+    top: -1rem;
+    }
+
+#navigation__button:hover #navigation__icon::after {
+    top: 1rem;
+    }
