@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Nav from "../components/Nav";
 import { Link } from "react-router-dom";
+import api from '../api'
 
 export default function SavedColors(props) {
   const [rgbSaved, setRgbSaved] = useState([]);
@@ -9,7 +10,7 @@ export default function SavedColors(props) {
     // Immediately Invoked Function Expression
     (async () => {
       try {
-        const response = await fetch("/api/colorcol");
+        const response = await fetch(api.url + "/api/colorcol");
         const data = await response.json();
         console.log(data);
         setRgbSaved(data);

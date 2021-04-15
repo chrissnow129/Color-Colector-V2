@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Nav from "../components/Nav";
+import api from '../api'
 
 export default function ColorShow(props) {
   const [colorSh, setColorSh] = useState([]);
@@ -7,7 +8,7 @@ export default function ColorShow(props) {
   useEffect(() => {
     (async () => {
       try {
-        const response = await fetch(`/api/colorcol/${props.match.params.id}`);
+        const response = await fetch(api.url + `/api/colorcol/${props.match.params.id}`);
         const data = await response.json();
         console.log(data);
         setColorSh([data]);
@@ -19,7 +20,7 @@ export default function ColorShow(props) {
 
   const handleDelete = async (evt) => {
     try {
-      const response = await fetch(`/api/colorcol/${props.match.params.id}`, {
+      const response = await fetch(api.url + `/api/colorcol/${props.match.params.id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -28,9 +29,7 @@ export default function ColorShow(props) {
       const data = await response.json();
     } catch (error) {
       console.error(error);
-    } finally {
-      window.location.assign("/saved");
-    }
+    } 
   };
 
   const darky = () => {

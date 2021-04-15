@@ -11,7 +11,7 @@ function createWindow() {
     height: 883,
     titleBarStyle: 'hidden',
     webPreferences: {
-      nodeIntegration: true,
+      nodeIntegration: true
     },
   });
 
@@ -28,6 +28,8 @@ function createWindow() {
   //   win.webContents.openDevTools({ mode: "detach" });
   // }
 }
+
+app.commandLine.appendSwitch("https://colorcollecterv2.herokuapp.com/")
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.

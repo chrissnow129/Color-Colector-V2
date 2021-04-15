@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Rgb from "../components/Rgb";
 import Nav from "../components/Nav";
+import api from '../api'
 
 export default function Home(props) {
   ////////// FOR RANDOM SINGLE COLORS ///////////
@@ -26,7 +27,7 @@ export default function Home(props) {
 
   const handleSave = async (newColor) => {
     try {
-      const response = await fetch("/api/colorcol", {
+      const response = await fetch(api.url + "/api/colorcol", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -48,9 +49,7 @@ export default function Home(props) {
       console.log(data);
     } catch (error) {
       console.error(error);
-    } finally {
-      window.location.assign("/saved");
-    }
+    } 
   };
 
   useEffect(() => {

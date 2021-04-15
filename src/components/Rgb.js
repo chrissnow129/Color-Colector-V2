@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import api from '../api'
 
 export default function Rgb(props) {
   const [query, updateQuery] = useState({
@@ -43,7 +44,7 @@ export default function Rgb(props) {
 
   const handleSave = async (newColor) => {
     try {
-      const response = await fetch("/api/colorcol", {
+      const response = await fetch(api.url + "/api/colorcol", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
