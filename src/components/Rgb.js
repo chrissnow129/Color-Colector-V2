@@ -66,8 +66,6 @@ export default function Rgb(props) {
       console.log(data);
     } catch (error) {
       console.error(error);
-    } finally {
-      window.location.assign("/saved");
     }
   };
 
@@ -125,7 +123,7 @@ export default function Rgb(props) {
                 style={props.dark ? {
                   backgroundColor: `rgba(${rgb2.rgb.r}, ${rgb2.rgb.g}, ${rgb2.rgb.b}, 0.3)`
                 } : { backgroundColor: 'rgba(0, 0, 0, 0.3)' }}
-                className="flex flex-col justify-center relative mb-6 w-48 h-48 rounded-xl shadow-md"
+                className="flex flex-col justify-center mb-6 w-48 h-48 rounded-xl shadow-md"
               >
                 <h1 className={props.dark ? "text-center font-semibold text-xl py-2 text-white" : "text-center font-semibold text-xl py-2 text-gray-800"}>
                   {rgb2.name.value}

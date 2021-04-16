@@ -93,49 +93,49 @@ export default function Home(props) {
         </h1>
         <Nav dark={props.dark} />
         {props.dark ? (
-          <button
-            id="light"
-            className="bg-white w-14 h-14 py-2 mr-6 rounded-full shadow-xl"
-            style={{ backgroundColor: "rgb(255,247,231)" }}
-            onClick={darky}
+        <button
+          id="light"
+          className="bg-white w-14 h-14 rounded-full shadow-xl"
+          style={{ backgroundColor: "rgb(255,247,231)" }}
+          onClick={darky}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 mx-auto w-6 transform hover:rotate-180 transition duration-500"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 mx-auto w-6 transform hover:rotate-180 transition duration-500"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M20.354 15.354A9 9 0 018.606 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-              />
-            </svg>
-          </button>
-        ) : (
-          <button
-            id="dark"
-            className="bg-gray-700 w-14 h-14 py-2 fixed rounded-full shadow-2xl"
-            onClick={darky}
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M20.354 15.354A9 9 0 018.606 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+            />
+          </svg>
+        </button>
+      ) : (
+        <button
+          id="dark"
+          className="bg-gray-700 w-14 h-14 py-2 fixed rounded-full shadow-2xl"
+          onClick={darky}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 mx-auto w-6 transform hover:rotate-180 transition duration-500"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="white"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 mx-auto w-6 transform hover:rotate-180 transition duration-500"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="white"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M20.354 15.354A9 9 0 018.606 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-              />
-            </svg>
-          </button>
-        )}
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M20.354 15.354A9 9 0 018.606 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+            />
+          </svg>
+        </button>
+      )}
       </header>
       <div>
         <div>

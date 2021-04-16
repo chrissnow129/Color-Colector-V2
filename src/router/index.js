@@ -4,7 +4,6 @@ import routes from './routes';
 const AppRouter = (props) => {
 	const [dark, setDark] = useState(true)
 
-
 	return (
 		<>
 		
