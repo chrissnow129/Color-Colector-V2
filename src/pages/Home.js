@@ -71,11 +71,11 @@ export default function Home(props) {
         props.dark
           ? {
               background:
-                "linear-gradient(58deg, rgba(255,203,242,1) 0%, rgba(255,234,195,1) 50%, rgba(192,253,255,1) 87%)",
+                "linear-gradient(58deg, rgba(255,162,237,1) 0%, rgba(255,222,160,1) 43%, rgba(168,252,255,1)",
             }
           : {
               background:
-                "linear-gradient(58deg, rgba(107,15,158,1) 0%, rgba(255,103,246,1) 51%, rgba(255,193,109,1) 87%)",
+                "linear-gradient(58deg, rgba(107,15,158,1) 10%, rgba(255,103,246,1) 51%, rgba(255,193,109,1) 87%)",
             }
       }
     >
@@ -84,9 +84,10 @@ export default function Home(props) {
           id="title"
           className={
             props.dark
-              ? "relative top-40 left-1/3 w-1/3 text-8xl font-bold tracking-wider text-yellow-50"
+              ? "relative top-40 left-1/3 w-1/3 text-8xl font-bold tracking-wider"
               : "relative top-40 left-1/3 w-1/3 text-8xl font-bold tracking-wider text-gray-800 text-opacity-60"
           }
+          style={props.dark ? {color: 'rgb(255,247,231)'} : {}}
         >
           Color
           <br /> Collector
@@ -148,7 +149,7 @@ export default function Home(props) {
               }
               className={
                 props.dark
-                  ? "flex flex-col justify-center bg-white max-w-xl bg-opacity-20 mx-auto mt-64 w-80 h-64 rounded-xl shadow-md"
+                  ? "flex flex-col justify-center bg-white max-w-xl bg-opacity-30 bg-clip-padding border-solid border border-white border-opacity-10 backdrop-filter backdrop-blur-lg mx-auto mt-64 w-80 h-64 rounded-xl shadow-md"
                   : "flex flex-col justify-center bg-black max-w-xl bg-opacity-30 mx-auto mt-64 w-80 h-64 rounded-xl shadow-md"
               }
             >
@@ -173,7 +174,7 @@ export default function Home(props) {
               <h3
                 className={
                   props.dark
-                    ? "text-center text-md text-gray-300"
+                    ? "text-center text-md text-white"
                     : "text-center text-md text-gray-700"
                 }
               >

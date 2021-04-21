@@ -26,7 +26,7 @@ export default function SavedColors(props) {
 
   return (
     <div
-      class="h-screen overflow-auto"
+      className="h-screen overflow-auto"
       style={
         props.dark
           ? {

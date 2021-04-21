@@ -2,23 +2,17 @@ import React, { useState, useEffect, useRef } from "react";
 import Nav from "../components/Nav";
 
 export default function ColorScheme(props) {
-  const [scheme, setScheme] = useState({
-    baseURL: "https://www.thecolorapi.com/scheme?",
-    option: "rgb=",
-    rgb: "",
-    mode: `&mode=triad`,
-    searchURL: "",
-  });
-
+  const [scheme, setScheme] = useState();
+  const [schemeId, setSchemeId] = useState()
   const [schemeIn, updtscheme] = useState({});
   const [schemeLst, setschemeLst] = useState([]);
 
   const schemeRef = useRef(null);
 
   const getScheme = async () => {
-    if (scheme.searchURL) {
+    if (scheme) {
       try {
-        const response = await fetch(scheme.searchURL);
+        const response = await fetch(`https://www.thecolorapi.com/scheme?rgb=${scheme}&mode=triad`);
         const data = await response.json();
         await updtscheme(data);
         await setschemeLst([...schemeLst, data]);
@@ -31,18 +25,15 @@ export default function ColorScheme(props) {
 
   useEffect(() => {
     getScheme();
-  }, [scheme]);
+  }, [schemeId]);
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    setScheme({
-      ...scheme,
-      searchURL: scheme.baseURL + scheme.option + scheme.rgb + scheme.mode,
-    });
+    setSchemeId(scheme);
   };
 
   const handleChange = (evt) => {
-    setScheme({ ...scheme, rgb: evt.target.value });
+    setScheme(evt.target.value);
   };
 
   const darky = () => {
@@ -140,7 +131,7 @@ export default function ColorScheme(props) {
             type="text"
             placeholder="RGB Value"
             onChange={handleChange}
-            value={scheme.rgb}
+            value={scheme}
             ref={schemeRef}
           />
           <input
@@ -150,7 +141,7 @@ export default function ColorScheme(props) {
           />
         </form>
       </div>
-      <div class="flex flex-col gap-14 my-5">
+      <div className="flex flex-col gap-14 my-5">
         {schemeLst.map((scheme2) => {
           return (
             <div

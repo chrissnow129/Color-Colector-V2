@@ -2,11 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
-#nav {
-    transition: 2s;
-}
-
 #getcolor {
     position: relative;
     left: 12px;

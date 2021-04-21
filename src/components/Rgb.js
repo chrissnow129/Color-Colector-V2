@@ -1,13 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
-import api from '../api'
+import api from "../api";
 
 export default function Rgb(props) {
-  const [query, updateQuery] = useState({
-    baseURL: "https://www.thecolorapi.com/id?",
-    option: "rgb=",
-    rgb: "",
-    searchURL: "",
-  });
+  const [query, updateQuery] = useState();
+
+  const [rgbId, setRgbId] = useState();
+
   const [rgbIn, updtRgb] = useState({});
 
   const [rgbLst, setRgbLst] = useState([]);
@@ -17,9 +15,11 @@ export default function Rgb(props) {
   // const g = useRef(null);
 
   const getRgb = async () => {
-    if (query.searchURL) {
+    if (query) {
       try {
-        const response = await fetch(query.searchURL);
+        const response = await fetch(
+          `https://www.thecolorapi.com/id?rgb=${query}`
+        );
         const data = await response.json();
         await updtRgb(data);
         await setRgbLst([...rgbLst, data]);
@@ -32,14 +32,11 @@ export default function Rgb(props) {
 
   useEffect(() => {
     getRgb();
-  }, [query]);
+  }, [rgbId]);
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    updateQuery({
-      ...query,
-      searchURL: query.baseURL + query.option + query.rgb,
-    });
+    setRgbId(query);
   };
 
   const handleSave = async (newColor) => {
@@ -70,7 +67,7 @@ export default function Rgb(props) {
   };
 
   const handleChange = (evt) => {
-    updateQuery({ ...query, rgb: evt.target.value });
+    updateQuery(evt.target.value);
   };
 
   return (
@@ -99,7 +96,7 @@ export default function Rgb(props) {
             type="text"
             placeholder="RGB Value"
             onChange={handleChange}
-            value={query.rgb}
+            value={query}
             ref={rgbRef}
           />
         </div>
@@ -120,12 +117,22 @@ export default function Rgb(props) {
             <div>
               <div
                 key={rgb2.hex}
-                style={props.dark ? {
-                  backgroundColor: `rgba(${rgb2.rgb.r}, ${rgb2.rgb.g}, ${rgb2.rgb.b}, 0.3)`
-                } : { backgroundColor: 'rgba(0, 0, 0, 0.3)' }}
+                style={
+                  props.dark
+                    ? {
+                        backgroundColor: `rgba(${rgb2.rgb.r}, ${rgb2.rgb.g}, ${rgb2.rgb.b}, 0.3)`,
+                      }
+                    : { backgroundColor: "rgba(0, 0, 0, 0.3)" }
+                }
                 className="flex flex-col justify-center mb-6 w-48 h-48 rounded-xl shadow-md"
               >
-                <h1 className={props.dark ? "text-center font-semibold text-xl py-2 text-white" : "text-center font-semibold text-xl py-2 text-gray-800"}>
+                <h1
+                  className={
+                    props.dark
+                      ? "text-center font-semibold text-xl py-2 text-white"
+                      : "text-center font-semibold text-xl py-2 text-gray-800"
+                  }
+                >
                   {rgb2.name.value}
                 </h1>
                 <img
