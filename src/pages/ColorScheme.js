@@ -7,6 +7,8 @@ export default function ColorScheme(props) {
   const [schemeIn, updtscheme] = useState({});
   const [schemeLst, setschemeLst] = useState([]);
 
+  const [dark, setDark] = useState(true);
+
   const schemeRef = useRef(null);
 
   const getScheme = async () => {
@@ -37,13 +39,13 @@ export default function ColorScheme(props) {
   };
 
   const darky = () => {
-		props.setDark(!props.dark);
+		setDark(!dark);
 	  };
 
   return (
     <div
       style={
-        props.dark
+        dark
           ? {
               background:
                 "linear-gradient(58deg, rgba(255,203,242,1) 0%, rgba(255,234,195,1) 50%, rgba(192,253,255,1) 87%)",
@@ -59,14 +61,14 @@ export default function ColorScheme(props) {
         <h1
           id="schemetitle"
           className={
-            props.dark
+            dark
               ? "relative left-0 top-36 text-6xl font-extralight text-center text-white"
               : "relative left-0 top-36 text-6xl font-extralight text-center text-gray-700"
           }
         >
           Color Scheme Creator
         </h1>
-        {props.dark ? (
+        {dark ? (
           <button
             id="light"
             className="bg-white w-14 h-14 py-2 rounded-full shadow-xl"
@@ -115,7 +117,7 @@ export default function ColorScheme(props) {
       <div
         style={{ left: "27rem" }}
         className={
-          props.dark
+          dark
             ? "rounded-xl shadow-lg bg-white bg-opacity-20 absolute w-1/4 h-32 h-10 top-1/4"
             : "rounded-xl shadow-lg bg-black bg-opacity-30 absolute w-1/4 h-32 h-10 top-1/4"
         }
@@ -123,7 +125,7 @@ export default function ColorScheme(props) {
         <form onSubmit={handleSubmit}>
           <input
             style={
-              props.dark
+              dark
                 ? { boxShadow: "1px 1px 5px 0px rgba(0,0,0,0.125)inset" }
                 : { boxShadow: "1px 1px 5px 0px rgba(0,0,0,0.2)inset" }
             }

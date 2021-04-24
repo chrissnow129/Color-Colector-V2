@@ -10,6 +10,8 @@ export default function Rgb(props) {
 
   const [rgbLst, setRgbLst] = useState([]);
 
+  const [dark, setDark] = useState(true);
+
   const rgbRef = useRef(null);
   // const b = useRef(null);
   // const g = useRef(null);
@@ -74,12 +76,12 @@ export default function Rgb(props) {
     <div key="238">
       <form
         style={
-          props.dark
+          dark
             ? { boxShadow: "1px 1px 5px 0px rgba(0,0,0,0.1)" }
             : { boxShadow: "1px 1px 5px 0px rgba(0,0,0,0.3)" }
         }
         className={
-          props.dark
+          dark
             ? "flex flex-col justify-center my-8 pt-5 mx-auto text-white w-52 h-28 bg-white bg-opacity-20 border-3 border-green-100 rounded-xl"
             : "flex flex-col justify-center my-8 pt-5 mx-auto text-gray-800 w-52 h-28 bg-black bg-opacity-20 border-3 border-green-100 rounded-xl"
         }

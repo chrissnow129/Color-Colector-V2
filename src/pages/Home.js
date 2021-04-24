@@ -7,6 +7,7 @@ export default function Home(props) {
   ////////// FOR RANDOM SINGLE COLORS ///////////
 
   const [color, setColor] = useState();
+  const [dark, setDark] = useState(true);
 
   const fetchColor = async () => {
     const r = Math.floor(Math.random() * 256);
@@ -57,7 +58,7 @@ export default function Home(props) {
   }, []);
 
   const darky = () => {
-		props.setDark(!props.dark);
+		setDark(!dark);
 	  };
 
   return (
@@ -68,7 +69,7 @@ export default function Home(props) {
       // style={{background: 'linear-gradient(219deg, rgba(105,48,195,1) 0%, rgba(78,168,222,1) 50%, rgba(128,255,219,1) 100%)'}}
 
       style={
-        props.dark
+        dark
           ? {
               background:
                 "linear-gradient(58deg, rgba(255,162,237,1) 0%, rgba(255,222,160,1) 43%, rgba(168,252,255,1)",
@@ -83,17 +84,17 @@ export default function Home(props) {
         <h1
           id="title"
           className={
-            props.dark
+            dark
               ? "relative top-40 left-1/3 w-1/3 text-8xl font-bold tracking-wider"
               : "relative top-40 left-1/3 w-1/3 text-8xl font-bold tracking-wider text-gray-800 text-opacity-60"
           }
-          style={props.dark ? {color: 'rgb(255,247,231)'} : {}}
+          style={dark ? {color: 'rgb(255,247,231)'} : {}}
         >
           Color
           <br /> Collector
         </h1>
         <Nav dark={props.dark} />
-        {props.dark ? (
+        {dark ? (
         <button
           id="light"
           className="bg-white w-14 h-14 rounded-full shadow-xl"
@@ -148,15 +149,15 @@ export default function Home(props) {
                 }
               }
               className={
-                props.dark
+                dark
                   ? "flex flex-col justify-center bg-white max-w-xl bg-opacity-30 bg-clip-padding border-solid border border-white border-opacity-10 backdrop-filter backdrop-blur-lg mx-auto mt-64 w-80 h-64 rounded-xl shadow-md"
                   : "flex flex-col justify-center bg-black max-w-xl bg-opacity-30 mx-auto mt-64 w-80 h-64 rounded-xl shadow-md"
               }
             >
               <h1
                 className={
-                  props.dark
-                    ? "text-center font-semibold text-xl pt-2 text-gray-300"
+                  dark
+                    ? "text-center font-semibold text-xl pt-2 text-indigo-200"
                     : "text-center font-semibold text-xl pt-2 text-gray-700"
                 }
               >
@@ -164,8 +165,8 @@ export default function Home(props) {
               </h1>
               <h3
                 className={
-                  props.dark
-                    ? "text-center text-md text-gray-300"
+                  dark
+                    ? "text-center text-md text-indigo-200"
                     : "text-center text-md text-gray-700"
                 }
               >
@@ -173,8 +174,8 @@ export default function Home(props) {
               </h3>
               <h3
                 className={
-                  props.dark
-                    ? "text-center text-md text-white"
+                  dark
+                    ? "text-center text-md text-indigo-200"
                     : "text-center text-md text-gray-700"
                 }
               >
@@ -182,7 +183,7 @@ export default function Home(props) {
               </h3>
               <img
                 style={
-                  props.dark
+                  dark
                     ? {}
                     : {
                         boxShadow: `1px 1px 5px 0px rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, 2)`,
@@ -196,7 +197,7 @@ export default function Home(props) {
                 id="getcolor"
                 className="w-32 h-9 rounded-tl-2xl border-2 rounded-br-2xl text-white hover:shadow-xl hover:transition-shadow duration-300 ease-in-out focus:outline-none"
                 style={
-                  props.dark
+                  dark
                     ? {
                         borderColor: `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, 0.3)`,
                       }
@@ -214,7 +215,7 @@ export default function Home(props) {
               <button
                 onClick={() => handleSave(color)}
                 style={
-                  props.dark
+                  dark
                     ? {
                         borderColor: `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, 0.3)`,
                       }
