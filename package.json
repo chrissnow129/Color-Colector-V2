@@ -1,7 +1,9 @@
 {
   "name": "color",
   "version": "0.1.0",
+  "description": "App to store colors when styling and designing",
   "main": "public/electron.js",
+  "author": "Chris Snowman",
   "homepage": "./",
   "private": true,
   "dependencies": {
