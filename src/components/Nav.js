@@ -13,8 +13,8 @@ export default function Nav(props) {
         htmlFor="navi-toggle"
         id="navigation__button"
         onClick={() => setOpenss((open) => !open)}
-        style={{ backgroundColor: "rgb(255,247,231)" }}
-        className="h-14 w-14 fixed top-5 right-4 rounded-full shadow-xl bg-opacity-40"
+        style={{ backgroundColor: "rgba(255,247,231,0.5)" }}
+        className="h-14 w-14 fixed top-5 right-4 rounded-full shadow-xl"
       >
         <span
           style={{ marginTop: "5rem" }}

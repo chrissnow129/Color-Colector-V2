@@ -8,7 +8,7 @@ function createWindow() {
   // Create the browser window.
   const win = new BrowserWindow({
     width: 1187,
-    height: 883,
+    height: 900,
     titleBarStyle: 'hidden',
     webPreferences: {
       nodeIntegration: true
@@ -24,9 +24,9 @@ function createWindow() {
   );
 
   // Open the DevTools.
-  if (isDev) {
-    win.webContents.openDevTools({ mode: "detach" });
-  }
+  // if (isDev) {
+  //   win.webContents.openDevTools({ mode: "detach" });
+  // }
 }
 
 app.commandLine.appendSwitch("https://colorcollecterv2.herokuapp.com/")

@@ -1,12 +1,13 @@
 const colors = require("@tailwindcss/postcss7-compat/colors");
 
 module.exports = {
-  mode: "aot",
+  mode: "jit",
   purge: ["./src/components/*.js", "./src/pages/*.js"],
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
       colors: {
+        blueGray: colors.blueGray,
         orange: colors.orange,
         amber: colors.amber,
         emerald: colors.emerald,
