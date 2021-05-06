@@ -19,7 +19,7 @@
 }
 
 #light {
-    position: fixed;
+    position: relative;
     left: 65rem;
     top: 22px;
 }
