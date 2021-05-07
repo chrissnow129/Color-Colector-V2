@@ -1,4 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Listbox } from "@headlessui/react";
+import { ChevronDownIcon } from "@heroicons/react/outline";
+import Dark from '../components/DarkSwitch'
 import Nav from "../components/Nav";
 
 export default function ColorScheme(props) {
@@ -6,8 +9,6 @@ export default function ColorScheme(props) {
   const [schemeId, setSchemeId] = useState()
   const [schemeIn, updtscheme] = useState({});
   const [schemeLst, setschemeLst] = useState([]);
-
-  const [dark, setDark] = useState(true);
 
   const schemeRef = useRef(null);
 
@@ -39,85 +40,74 @@ export default function ColorScheme(props) {
   };
 
   const darky = () => {
-		setDark(!dark);
-	  };
+    props.setDark(!props.dark);
+  };
 
   return (
     <div
-      style={
-        dark
-          ? {
-              background:
-                "linear-gradient(58deg, rgba(255,203,242,1) 0%, rgba(255,234,195,1) 50%, rgba(192,253,255,1) 87%)",
-            }
-          : {
-              background:
-                "linear-gradient(58deg, rgba(107,15,158,1) 0%, rgba(255,103,246,1) 51%, rgba(255,193,109,1) 87%)",
-            }
-      }
+    style={
+      props.dark
+        ? {
+            background: `${props.selectedGradient}`,
+          }
+        : {
+            background:
+              "linear-gradient(58deg, rgba(107,15,158,1) 10%, rgba(255,103,246,1) 51%, rgba(255,193,109,1) 87%)",
+          }
+    }
       className="h-screen overflow-auto bg-fixed"
     >
       <header>
         <h1
           id="schemetitle"
           className={
-            dark
+            props.dark
               ? "relative left-0 top-36 text-6xl font-extralight text-center text-white"
               : "relative left-0 top-36 text-6xl font-extralight text-center text-gray-700"
           }
         >
           Color Scheme Creator
         </h1>
-        {dark ? (
-          <button
-            id="light"
-            className="bg-white w-14 h-14 py-2 rounded-full shadow-xl"
-            style={{ backgroundColor: "rgb(255,247,231)" }}
-            onClick={darky}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 mx-auto w-6 transform hover:rotate-180 transition duration-500 focus:outline-none"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M20.354 15.354A9 9 0 018.606 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-              />
-            </svg>
-          </button>
-        ) : (
-          <button
-            id="dark"
-            className="bg-gray-700 w-14 h-14 py-2 fixed rounded-full shadow-2xl focus:outline-none"
-            onClick={darky}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 mx-auto w-6 transform hover:rotate-180 transition duration-500 focus:outline-none"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="white"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M20.354 15.354A9 9 0 018.606 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-              />
-            </svg>
-          </button>
-        )}
+        <Dark dark={props.dark} setDark={props.setDark} />
         <Nav />
+        <Listbox value={props.selectedGradient} onChange={props.setGradient}>
+          <Listbox.Button
+            className={`${
+              props.dark ? "bg-white" : "bg-gray-700"
+            } bg-opacity-50 h-[2.3rem] pr-10 pl-3 pt-1.5 absolute right-[10.5rem] top-[1.5rem] rounded-lg shadow-md focus:outline-none`}
+          >
+            Change Background
+            {props.dark ? (
+              <ChevronDownIcon className="w-6 h-6 relative left-[9.5rem] top-[-1.4rem]" />
+            ) : (
+              <ChevronDownIcon className="text-white w-6 h-6 relative left-[9.5rem] top-[-1.4rem]" />
+            )}
+          </Listbox.Button>
+          <Listbox.Options
+            className={`w-[10.3rem] fixed right-[11rem] top-[4.3rem] py-1 pl-0.5 pr-0.5 ${
+              props.dark ? "bg-white" : "bg-gray-700"
+            } bg-opacity-50 rounded-lg shadow-md focus:outline-none`}
+          >
+            {props.gradientArr.map((grad) => (
+              <Listbox.Option
+                className={`rounded-md ${
+                  props.dark
+                    ? "hover:text-cyan-500 hover:bg-[#BFFDFB]"
+                    : "hover:text-white hover:bg-gray-500 hover:bg-opacity-50"
+                } hover:shadow-inner cursor-pointer`}
+                key={grad.id}
+                value={grad.value}
+              >
+                {grad.name}
+              </Listbox.Option>
+            ))}
+          </Listbox.Options>
+        </Listbox>
       </header>
       <div
         style={{ left: "27rem" }}
         className={
-          dark
+          props.dark
             ? "rounded-xl shadow-lg bg-white bg-opacity-20 absolute w-1/4 h-32 h-10 top-1/4"
             : "rounded-xl shadow-lg bg-black bg-opacity-30 absolute w-1/4 h-32 h-10 top-1/4"
         }
@@ -125,7 +115,7 @@ export default function ColorScheme(props) {
         <form onSubmit={handleSubmit}>
           <input
             style={
-              dark
+              props.dark
                 ? { boxShadow: "1px 1px 5px 0px rgba(0,0,0,0.125)inset" }
                 : { boxShadow: "1px 1px 5px 0px rgba(0,0,0,0.2)inset" }
             }

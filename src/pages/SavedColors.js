@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
-import Nav from "../components/Nav";
 import { Link } from "react-router-dom";
-import api from '../api'
+import { Listbox } from "@headlessui/react";
+import { ChevronDownIcon } from "@heroicons/react/outline";
+import Grad from '../components/Grad'
+import Nav from "../components/Nav";
+import Dark from "../components/DarkSwitch";
+import api from "../api";
 
 export default function SavedColors(props) {
   const [rgbSaved, setRgbSaved] = useState([]);
@@ -20,70 +24,55 @@ export default function SavedColors(props) {
     })();
   }, []);
 
-  const darky = () => {
-    props.setDark(!props.dark);
-  };
-
   return (
     <div
       className="h-screen overflow-auto"
       style={
         props.dark
           ? {
-              background:
-                "linear-gradient(58deg, rgba(255,203,242,1) 0%, rgba(255,234,195,1) 50%, rgba(192,253,255,1) 87%)",
+              background: `${props.selectedGradient}`,
             }
           : {
               background:
-                "linear-gradient(58deg, rgba(107,15,158,1) 0%, rgba(255,103,246,1) 51%, rgba(255,193,109,1) 87%)",
+                "linear-gradient(58deg, rgba(107,15,158,1) 10%, rgba(255,103,246,1) 51%, rgba(255,193,109,1) 87%)",
             }
       }
     >
       <Nav />
-      {props.dark ? (
-        <button
-          id="light"
-          className="bg-white w-14 h-14 py-2 rounded-full shadow-xl"
-          style={{ backgroundColor: "rgb(255,247,231)" }}
-          onClick={darky}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 mx-auto w-6 transform hover:rotate-180 transition duration-500"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
+      <Dark dark={props.dark} setDark={props.setDark} />
+      <Listbox value={props.selectedGradient} onChange={props.setGradient}>
+          <Listbox.Button
+            className={`${
+              props.dark ? "bg-white" : "bg-gray-700"
+            } bg-opacity-50 h-[2.3rem] pr-10 pl-3 pt-1.5 absolute right-[10.5rem] top-[1.5rem] rounded-lg shadow-md focus:outline-none`}
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M20.354 15.354A9 9 0 018.606 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-            />
-          </svg>
-        </button>
-      ) : (
-        <button
-          id="dark"
-          className="bg-gray-700 w-14 h-14 py-2 fixed rounded-full shadow-2xl"
-          onClick={darky}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 mx-auto w-6 transform hover:rotate-180 transition duration-500"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="white"
+            Change Background
+            {props.dark ? (
+              <ChevronDownIcon className="w-6 h-6 relative left-[9.5rem] top-[-1.4rem]" />
+            ) : (
+              <ChevronDownIcon className="text-white w-6 h-6 relative left-[9.5rem] top-[-1.4rem]" />
+            )}
+          </Listbox.Button>
+          <Listbox.Options
+            className={`w-[10.3rem] fixed right-[11rem] top-[4.3rem] py-1 pl-0.5 pr-0.5 ${
+              props.dark ? "bg-white" : "bg-gray-700"
+            } bg-opacity-50 rounded-lg shadow-md focus:outline-none`}
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M20.354 15.354A9 9 0 018.606 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-            />
-          </svg>
-        </button>
-      )}
+            {props.gradientArr.map((grad) => (
+              <Listbox.Option
+                className={`rounded-md ${
+                  props.dark
+                    ? "hover:text-cyan-500 hover:bg-[#BFFDFB]"
+                    : "hover:text-white hover:bg-gray-500 hover:bg-opacity-50"
+                } hover:shadow-inner cursor-pointer`}
+                key={grad.id}
+                value={grad.value}
+              >
+                {grad.name}
+              </Listbox.Option>
+            ))}
+          </Listbox.Options>
+        </Listbox>
       <h1
         className={
           props.dark
