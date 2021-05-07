@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Dark from '../components/DarkSwitch'
 import Nav from "../components/Nav";
 import api from '../api'
 
@@ -39,64 +40,20 @@ export default function ColorShow(props) {
   return (
     <>
       <Nav />
-      {props.dark ? (
-        <button
-          id="light"
-          className="bg-white w-14 h-14 py-2 rounded-full shadow-xl"
-          style={{ backgroundColor: "rgb(255,247,231)" }}
-          onClick={darky}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 mx-auto w-6 transform hover:rotate-180 transition duration-500"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M20.354 15.354A9 9 0 018.606 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-            />
-          </svg>
-        </button>
-      ) : (
-        <button
-          id="dark"
-          className="bg-gray-700 w-14 h-14 py-2 fixed rounded-full shadow-2xl"
-          onClick={darky}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 mx-auto w-6 transform hover:rotate-180 transition duration-500"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="white"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M20.354 15.354A9 9 0 018.606 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-            />
-          </svg>
-        </button>
-      )}
+      <Dark dark={props.dark} setDark={props.setDark} />
       {colorSh.map((color) => {
         return (
           <div
-            style={
-              props.dark
-                ? {
-                    background:
-                      "linear-gradient(58deg, rgba(255,203,242,1) 0%, rgba(255,234,195,1) 50%, rgba(192,253,255,1) 87%)",
-                  }
-                : {
-                    background:
-                      "linear-gradient(58deg, rgba(107,15,158,1) 0%, rgba(255,103,246,1) 51%, rgba(255,193,109,1) 87%)",
-                  }
-            }
+          style={
+            props.dark
+              ? {
+                  background: `${props.selectedGradient}`,
+                }
+              : {
+                  background:
+                    "linear-gradient(58deg, rgba(107,15,158,1) 10%, rgba(255,103,246,1) 51%, rgba(255,193,109,1) 87%)",
+                }
+          }
             className="h-screen overflow-hidden"
           >
             <div
