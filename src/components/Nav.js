@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import routes from "../router/routes";
-import { HashRouter, Route, Switch, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Transition } from "@headlessui/react";
 
 export default function Nav(props) {
@@ -35,26 +35,21 @@ export default function Nav(props) {
         id="vertical"
         className="bg-white overflow-hidden bg-opacity-30 backdrop-filter backdrop-blur-sm backdrop-saturate-50 absolute rounded-tr-3xl rounded-br-3xl shadow-sm py-32 -top-0 h-screen w-72"
       >
-        <HashRouter>
-          <Switch>
-            
-            {routes
-              .filter((item) => !item.path.includes(":"))
-              .map(({ key, path }) => (
-                <Link
-                  className={
-                    open
-                      ? "flex flex-cols ml-3 font-light text-white my-6 py-2 text-2xl rounded-t-xl rounded-b-md w-full transition duration-700 ease-in-out transform hover:translate-x-14"
-                      : "flex flex-cols ml-3 w-full h-screen my-6 py-2 text-2xl"
-                  }
-                  key={key}
-                  to={path}
-                >
-                  {key}
-                </Link>
-              ))}
-          </Switch>
-        </HashRouter>
+        {routes
+          .filter((item) => !item.path.includes(":"))
+          .map(({ key, path }) => (
+            <Link
+              className={
+                open
+                  ? "flex flex-cols ml-3 font-light text-white my-6 py-2 text-2xl rounded-t-xl rounded-b-md w-full transition duration-700 ease-in-out transform hover:translate-x-14"
+                  : "flex flex-cols ml-3 w-full h-screen my-6 py-2 text-2xl"
+              }
+              key={key}
+              to={path}
+            >
+              {key}
+            </Link>
+          ))}
       </Transition>
     </div>
   );

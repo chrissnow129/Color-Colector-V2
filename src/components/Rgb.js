@@ -82,8 +82,8 @@ export default function Rgb(props) {
         }
         className={
           props.dark
-            ? "flex flex-col justify-center my-8 pt-5 mx-auto text-white w-52 h-28 bg-white bg-opacity-20 border-3 border-green-100 rounded-xl"
-            : "flex flex-col justify-center my-8 pt-5 mx-auto text-gray-800 w-52 h-28 bg-black bg-opacity-20 border-3 border-green-100 rounded-xl"
+            ? "flex flex-col justify-center my-8 pt-5 mx-auto text-white w-52 h-28 bg-white bg-opacity-30 border-3 border-green-100 rounded-xl"
+            : "flex flex-col justify-center my-8 pt-5 mx-auto text-gray-800 w-52 h-28 bg-black bg-opacity-30 border-3 border-green-100 rounded-xl"
         }
         onSubmit={handleSubmit}
       >
@@ -94,7 +94,7 @@ export default function Rgb(props) {
                 ? { boxShadow: "1px 1px 5px 0px rgba(0,0,0,0.125)inset" }
                 : { boxShadow: "1px 1px 5px 0px rgba(0,0,0,0.3)inset" }
             }
-            className="bg-transparent relative left-5 rounded-lg h-7 placeholder-opacity-20 focus:outline-none active:outline-none"
+            className={`${props.dark ? 'bg-white' : 'bg-black'} bg-opacity-30 relative left-5 rounded-lg h-7 placeholder-opacity-20 focus:outline-none active:outline-none`}
             type="text"
             placeholder="RGB Value"
             onChange={handleChange}
@@ -155,9 +155,6 @@ export default function Rgb(props) {
             </div>
           );
         })}
-        {/* {for(color in rgbIn){
-						console.log(rgbIn)
-					}} */}
       </div>
     </div>
   );
