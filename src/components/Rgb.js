@@ -24,7 +24,7 @@ export default function Rgb(props) {
         );
         const data = await response.json();
         await updtRgb(data);
-        await setRgbLst([...rgbLst, data]);
+        await setRgbLst([data]);
         console.log(data);
       } catch (error) {
         console.error(error);

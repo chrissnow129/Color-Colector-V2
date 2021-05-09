@@ -97,7 +97,7 @@ export default function Home(props) {
           <Listbox.Button
             className={`${
               props.dark ? "bg-white" : "bg-gray-700"
-            } bg-opacity-50 h-[2.3rem] pr-10 pl-3 pt-1.5 absolute right-[10.5rem] top-[1.5rem] rounded-lg shadow-md focus:outline-none`}
+            } bg-opacity-50 h-[2.3rem] pr-10 pl-3 pt-1.5 absolute right-[10.5rem] top-[1.5rem] rounded-lg shadow-lg focus:outline-none`}
           >
             Change Background
             {props.dark ? (
