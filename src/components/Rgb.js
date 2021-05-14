@@ -1,20 +1,19 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { Fragment, useState, useEffect, useRef } from "react";
+import { Dialog, Transition } from "@headlessui/react";
 import api from "../api";
 
 export default function Rgb(props) {
   const [query, updateQuery] = useState();
-
   const [rgbId, setRgbId] = useState();
-
-  const [rgbIn, updtRgb] = useState({});
-
   const [rgbLst, setRgbLst] = useState([]);
-
-  // const [dark, setDark] = useState(true);
+  const [modal, setModal] = useState(false);
 
   const rgbRef = useRef(null);
-  // const b = useRef(null);
-  // const g = useRef(null);
+  const completeButtonRef = useRef();
+
+  const closeModal = () => {
+    setModal(false);
+  };
 
   const getRgb = async () => {
     if (query) {
@@ -23,9 +22,9 @@ export default function Rgb(props) {
           `https://www.thecolorapi.com/id?rgb=${query}`
         );
         const data = await response.json();
-        await updtRgb(data);
         await setRgbLst([data]);
         console.log(data);
+        setModal(true);
       } catch (error) {
         console.error(error);
       }
@@ -43,6 +42,7 @@ export default function Rgb(props) {
 
   const handleSave = async (newColor) => {
     try {
+      setModal(false);
       const response = await fetch(api.url + "/api/colorcol", {
         method: "POST",
         headers: {
@@ -94,7 +94,9 @@ export default function Rgb(props) {
                 ? { boxShadow: "1px 1px 5px 0px rgba(0,0,0,0.125)inset" }
                 : { boxShadow: "1px 1px 5px 0px rgba(0,0,0,0.3)inset" }
             }
-            className={`${props.dark ? 'bg-white' : 'bg-black'} bg-opacity-30 relative left-5 rounded-lg h-7 placeholder-opacity-20 focus:outline-none active:outline-none`}
+            className={`${
+              props.dark ? "bg-white" : "bg-black"
+            } bg-opacity-30 relative left-5 rounded-lg h-7 placeholder-opacity-20 focus:outline-none active:outline-none`}
             type="text"
             placeholder="RGB Value"
             onChange={handleChange}
@@ -117,40 +119,74 @@ export default function Rgb(props) {
         {rgbLst.map((rgb2) => {
           return (
             <div>
-              <div
-                key={rgb2.hex}
-                style={
-                  props.dark
-                    ? {
-                        backgroundColor: `rgba(${rgb2.rgb.r}, ${rgb2.rgb.g}, ${rgb2.rgb.b}, 0.3)`,
-                      }
-                    : { backgroundColor: "rgba(0, 0, 0, 0.3)" }
-                }
-                className="flex flex-col justify-center mb-6 w-48 h-48 rounded-xl shadow-md"
-              >
-                <h1
-                  className={
-                    props.dark
-                      ? "text-center font-semibold text-xl py-2 text-white"
-                      : "text-center font-semibold text-xl py-2 text-gray-800"
-                  }
-                >
-                  {rgb2.name.value}
-                </h1>
-                <img
-                  className="m-auto rounded-3xl hover:shadow-2xl transform hover:-translate-y-2 hover:transition duration-300 ease-in-out"
-                  src={rgb2.image.bare}
-                  alt=""
-                />
-                <button
-                  style={{
-                    backgroundColor: `rgba(${rgb2.rgb.r}, ${rgb2.rgb.g}, ${rgb2.rgb.b}, 0.2)`,
-                  }}
-                  className="m-auto my-3 w-32 h-9 rounded-tl-2xl rounded-br-2xl text-white font-extralight text-sm hover:shadow-xl hover:transition duration-300 ease-in-out outline-none"
-                  onClick={() => handleSave(rgb2)}
-                >
-                  Save This Color
-                </button>
+              <div>
+                <Transition show={modal} as={Fragment}>
+                  <Dialog open={modal} onClose={() => setModal(false)}>
+                    <Transition.Child
+                      as={Fragment}
+                      enter="ease-out duration-300"
+                      enterFrom="opacity-0"
+                      enterTo="opacity-100"
+                      leave="ease-in duration-200"
+                      leaveFrom="opacity-100"
+                      leaveTo="opacity-0"
+                    >
+                      <Dialog.Overlay className="fixed inset-0 bg-white backdrop-filter backdrop-blur-2xl opacity-40" />
+                    </Transition.Child>
+                    <span
+                      className="inline-block h-screen align-middle"
+                      aria-hidden="true"
+                    >
+                      &#8203;
+                    </span>
+                    <Transition.Child
+                      as={Fragment}
+                      enter="ease-out duration-300"
+                      enterFrom="opacity-0 scale-95"
+                      enterTo="opacity-100 scale-100"
+                      leave="ease-in duration-200"
+                      leaveFrom="opacity-100 scale-100"
+                      leaveTo="opacity-0 scale-95"
+                    >
+                      <div className="bg-[#fcf7e7] bg-opacity-40 backdrop-filter backdrop-blur absolute left-[26rem] top-[23rem] rounded-xl shadow-2xl w-[22rem] h-[15rem]">
+                        <Dialog.Title
+                          style={{
+                            color: `rgba(${rgb2.rgb.r}, ${rgb2.rgb.g}, ${rgb2.rgb.b}`,
+                          }}
+                          className="text-center text-2xl mt-[1rem] tracking-wide font-semibold"
+                        >
+                          {rgb2.name.value}
+                        </Dialog.Title>
+                        <img
+                          className="mt-[3px] ml-32 rounded-3xl"
+                          src={rgb2.image.bare}
+                          alt=""
+                        />
+                        <Dialog.Description className="text-center py-[3px]">
+                          Is this the color you want?
+                        </Dialog.Description>
+                        <button
+                          style={{
+                            borderColor: `rgba(${rgb2.rgb.r}, ${rgb2.rgb.g}, ${rgb2.rgb.b}`,
+                          }}
+                          className="ml-2 mt-2 w-32 h-8 rounded-tl-2xl rounded-br-2xl text-black border-2 hover:shadow-xl hover:transition duration-300 ease-in-out outline-none"
+                          onClick={() => handleSave(rgb2)}
+                        >
+                          Save This Color
+                        </button>
+                        <button
+                          style={{
+                            borderColor: `rgba(${rgb2.rgb.r}, ${rgb2.rgb.g}, ${rgb2.rgb.b}`,
+                          }}
+                          className="ml-20 mt-2 w-32 h-8 rounded-bl-2xl rounded-tr-2xl text-black border-2 hover:shadow-xl hover:transition duration-300 ease-in-out outline-none"
+                          onClick={() => setModal(false)}
+                        >
+                          Nope
+                        </button>
+                      </div>
+                    </Transition.Child>
+                  </Dialog>
+                </Transition>
               </div>
             </div>
           );
