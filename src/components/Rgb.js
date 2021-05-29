@@ -1,5 +1,7 @@
 import React, { Fragment, useState, useEffect, useRef } from "react";
 import { Dialog, Transition } from "@headlessui/react";
+import { HexColorPicker } from "react-colorful";
+import { XIcon } from '@heroicons/react/solid'
 import api from "../api";
 
 export default function Rgb(props) {
@@ -7,19 +9,16 @@ export default function Rgb(props) {
   const [rgbId, setRgbId] = useState();
   const [rgbLst, setRgbLst] = useState([]);
   const [modal, setModal] = useState(false);
+  const [colorPick, setColorPick] = useState("#aabbcc");
 
   const rgbRef = useRef(null);
-  const completeButtonRef = useRef();
-
-  const closeModal = () => {
-    setModal(false);
-  };
 
   const getRgb = async () => {
     if (query) {
+      const query2 = query.substring(1);
       try {
         const response = await fetch(
-          `https://www.thecolorapi.com/id?rgb=${query}`
+          `https://www.thecolorapi.com/id?hex=${query2}`
         );
         const data = await response.json();
         await setRgbLst([data]);
@@ -82,8 +81,8 @@ export default function Rgb(props) {
         }
         className={
           props.dark
-            ? "flex flex-col justify-center my-8 pt-5 mx-auto text-white w-52 h-28 bg-white bg-opacity-30 border-3 border-green-100 rounded-xl"
-            : "flex flex-col justify-center my-8 pt-5 mx-auto text-gray-800 w-52 h-28 bg-black bg-opacity-30 border-3 border-green-100 rounded-xl"
+            ? "flex flex-col justify-center my-8 pt-5 mx-auto text-white w-[20rem] h-[18rem] bg-white bg-opacity-30 border-3 border-green-100 rounded-xl"
+            : "flex flex-col justify-center my-8 pt-5 mx-auto text-gray-800 w-[20rem] h-[18rem] bg-black bg-opacity-30 border-3 border-green-100 rounded-xl"
         }
         onSubmit={handleSubmit}
       >
@@ -96,7 +95,7 @@ export default function Rgb(props) {
             }
             className={`${
               props.dark ? "bg-white" : "bg-black"
-            } bg-opacity-30 relative left-5 rounded-lg h-7 placeholder-opacity-20 focus:outline-none active:outline-none`}
+            } bg-opacity-30 relative left-5 bottom-[0.5rem] rounded-lg w-[7rem] h-7 placeholder-opacity-20 focus:outline-none active:outline-none`}
             type="text"
             placeholder="RGB Value"
             onChange={handleChange}
@@ -108,11 +107,17 @@ export default function Rgb(props) {
         <input
           className={
             props.dark
-              ? "w-32 mx-auto mb-8 border-2 border-gray-300 rounded-bl-2xl text-white h-10 rounded-tr-2xl bg-transparent hover:shadow-xl hover:transition duration-300 ease-in-out focus:outline-none"
-              : "w-32 mx-auto mb-8 border-2 border-gray-700 rounded-bl-2xl h-10 text-gray-800 rounded-tr-2xl bg-transparent hover:shadow-xl hover:transition duration-300 ease-in-out focus:outline-none"
+              ? "w-32 relative bottom-[3rem] left-[4.5rem] mx-auto border-2 border-gray-300 rounded-bl-2xl text-white h-10 rounded-tr-2xl bg-transparent hover:shadow-xl hover:transition duration-300 ease-in-out focus:outline-none"
+              : "w-32 relative bottom-[3rem] left-[4.5rem] mx-auto border-2 border-gray-700 rounded-bl-2xl h-10 text-gray-800 rounded-tr-2xl bg-transparent hover:shadow-xl hover:transition duration-300 ease-in-out focus:outline-none"
           }
           type="submit"
           value="Get this Color"
+        />
+        <HexColorPicker
+          className='relative bottom-[1.7rem] left-[4rem] w-[10rem]'
+          style={{ WebkitAppRegion: "no-drag" }}
+          color={query}
+          onChange={updateQuery}
         />
       </form>
       <div className="grid grid-cols-4 ml-7">
@@ -131,14 +136,12 @@ export default function Rgb(props) {
                       leaveFrom="opacity-100"
                       leaveTo="opacity-0"
                     >
-                      <Dialog.Overlay className="fixed inset-0 bg-white backdrop-filter backdrop-blur-2xl opacity-40" />
+                      <Dialog.Overlay
+                        className={`fixed inset-0 ${
+                          props.dark ? "bg-[#FFFDE1]" : "bg-black"
+                        } backdrop-filter backdrop-blur-2xl opacity-40`}
+                      />
                     </Transition.Child>
-                    <span
-                      className="inline-block h-screen align-middle"
-                      aria-hidden="true"
-                    >
-                      &#8203;
-                    </span>
                     <Transition.Child
                       as={Fragment}
                       enter="ease-out duration-300"
@@ -148,7 +151,11 @@ export default function Rgb(props) {
                       leaveFrom="opacity-100 scale-100"
                       leaveTo="opacity-0 scale-95"
                     >
-                      <div className="bg-[#fcf7e7] bg-opacity-40 backdrop-filter backdrop-blur absolute left-[26rem] top-[23rem] rounded-xl shadow-2xl w-[22rem] h-[15rem]">
+                      <div
+                        className={`${
+                          props.dark ? "bg-[#fcf7e7]" : "bg-black"
+                        } bg-opacity-40 backdrop-filter backdrop-blur absolute left-[26rem] top-[23rem] rounded-xl shadow-2xl w-[22rem] h-[15rem]`}
+                      >
                         <Dialog.Title
                           style={{
                             color: `rgba(${rgb2.rgb.r}, ${rgb2.rgb.g}, ${rgb2.rgb.b}`,
@@ -162,27 +169,19 @@ export default function Rgb(props) {
                           src={rgb2.image.bare}
                           alt=""
                         />
-                        <Dialog.Description className="text-center py-[3px]">
+                        <Dialog.Description className="text-center text-opacity-70 font-sans antialiased py-[3px]">
                           Is this the color you want?
                         </Dialog.Description>
                         <button
                           style={{
                             borderColor: `rgba(${rgb2.rgb.r}, ${rgb2.rgb.g}, ${rgb2.rgb.b}`,
                           }}
-                          className="ml-2 mt-2 w-32 h-8 rounded-tl-2xl rounded-br-2xl text-black border-2 hover:shadow-xl hover:transition duration-300 ease-in-out outline-none"
+                          className="ml-28 mt-2 w-32 h-8 rounded-tl-2xl rounded-br-2xl text-black text-opacity-70 border-2 focus:ring-2 focus:outline-none hover:shadow-xl hover:transition duration-300 ease-in-out outline-none"
                           onClick={() => handleSave(rgb2)}
                         >
                           Save This Color
                         </button>
-                        <button
-                          style={{
-                            borderColor: `rgba(${rgb2.rgb.r}, ${rgb2.rgb.g}, ${rgb2.rgb.b}`,
-                          }}
-                          className="ml-20 mt-2 w-32 h-8 rounded-bl-2xl rounded-tr-2xl text-black border-2 hover:shadow-xl hover:transition duration-300 ease-in-out outline-none"
-                          onClick={() => setModal(false)}
-                        >
-                          Nope
-                        </button>
+                        <XIcon className='h-5 w-5 relative bottom-[13.3rem] left-[20rem] text-black text-opacity-50' onClick={() => setModal(false)}/>
                       </div>
                     </Transition.Child>
                   </Dialog>

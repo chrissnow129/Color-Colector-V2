@@ -62,3 +62,17 @@
 #navigation__button:hover #navigation__icon::after {
     top: 1rem;
     }
+
+.react-colorful {
+    width: 10rem;
+}
+
+.react-colorful__saturation{
+    margin-bottom: 5px;
+}
+
+.custom-pointers .react-colorful__saturation-pointer{
+    position: relative;
+    height: 60px;
+    width: 60px;
+}
