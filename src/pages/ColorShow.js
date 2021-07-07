@@ -60,24 +60,24 @@ export default function ColorShow(props) {
               id="show"
               className={
                 props.dark
-                  ? "flex flex-col justify-center w-1/3 h-1/3 bg-white bg-opacity-20 rounded-xl shadow-md text-white"
-                  : "flex flex-col justify-center w-1/3 h-1/3 bg-black bg-opacity-30 rounded-xl shadow-md text-white"
+                  ? "flex flex-col justify-center w-[33rem] h-1/3 bg-white bg-opacity-20 rounded-xl shadow-md text-white"
+                  : "flex flex-col justify-center w-[33rem] h-1/3 bg-black bg-opacity-30 rounded-xl shadow-md text-white"
               }
             >
               <h1
                 className={
                   props.dark
-                    ? "text-center text-xl pt-2 text-white"
-                    : "text-center text-xl pt-2 text-gray-800"
+                    ? "text-center text-3xl font-extrabold pt-2 pb-2 text-green"
+                    : "text-center text-3xl font-extrabold pt-2 pb-2 text-gray-800"
                 }
               >
-                Name: {color.name}
+                {color.name}
               </h1>
               <h3
                 className={
                   props.dark
-                    ? "text-center text-md pt-0.5 text-white"
-                    : "text-center text-md pt-0.5 text-gray-800"
+                    ? "relative right-[10.8rem] text-lg font-semibold text-center text-md pt-0.5 text-white"
+                    : "relative right-[10.8rem] text-lg font-semibold text-center text-md pt-0.5 text-gray-800"
                 }
               >
                 HEX Value: {color.hex}
@@ -89,7 +89,7 @@ export default function ColorShow(props) {
                     : "text-center text-md pt-0.5 text-gray-800"
                 }
               >
-                RGB Value: {color.r}, {color.g}, {color.b}
+                HSL Value: {color.h}, {color.s}, {color.l}
               </h3>
               <h3
                 className={
@@ -98,11 +98,11 @@ export default function ColorShow(props) {
                     : "text-center text-md pt-0.5 text-gray-800"
                 }
               >
-                HSL Value: {color.h}, {color.s}, {color.l}
+                RGB Value: {color.r}, {color.g}, {color.b}
               </h3>
               {props.dark ? (
                 <img
-                  className="m-auto rounded-3xl hover:shadow-2xl transform hover:-translate-y-2 transition duration-300 ease-in-out"
+                  className="relative left-[25rem] bottom-[8.3rem] rounded-tr-xl rounded-br-xl w-32 h-[10rem] hover:shadow-2xl transform hover:-translate-y-2 transition duration-300 ease-in-out"
                   src={color.image}
                   alt=""
                 />
@@ -111,7 +111,7 @@ export default function ColorShow(props) {
                   style={{
                     boxShadow: `1px 1px 5px 0px rgba(${color.r}, ${color.g}, ${color.b}, 2)`,
                   }}
-                  className="m-auto rounded-3xl hover:shadow-2xl transform hover:-translate-y-2 transition duration-300 ease-in-out"
+                  className="relative left-[25rem] bottom-[8.3rem] rounded-tr-xl rounded-br-xl w-32 h-[18rem] hover:shadow-2xl transform hover:-translate-y-2 transition duration-300 ease-in-out"
                   src={color.image}
                   alt=""
                 />
@@ -119,8 +119,8 @@ export default function ColorShow(props) {
               <button
                 className={
                   props.dark
-                    ? "m-auto mt-2 w-36 h-9 rounded-tl-2xl rounded-br-2xl text-white bg-transparent border-2 hover:shadow-xl hover:transition duration-300 ease-in-out outline-none"
-                    : "m-auto mt-2 w-36 h-9 rounded-tl-2xl rounded-br-2xl text-gray-800 bg-transparent border-2 hover:shadow-xl hover:transition duration-300 ease-in-out outline-none"
+                    ? "relative left-[8rem] mt-3 w-36 h-9 rounded-tl-2xl rounded-br-2xl text-white bg-transparent border-2 hover:shadow-xl hover:transition duration-300 ease-in-out outline-none"
+                    : "relative left-[8rem] mt-3 w-36 h-9 rounded-tl-2xl rounded-br-2xl text-gray-800 bg-transparent border-2 hover:shadow-xl hover:transition duration-300 ease-in-out outline-none"
                 }
                 style={
                   props.dark
