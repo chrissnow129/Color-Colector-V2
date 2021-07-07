@@ -72,17 +72,18 @@ export default function Rgb(props) {
   };
 
   return (
-    <div key="238">
+    <>
       <form
+      id='color2'
         style={
           props.dark
-            ? { boxShadow: "1px 1px 5px 0px rgba(0,0,0,0.1)" }
+            ? { boxShadow: "0px 4px 6px -1px rgba(0,0,0,0.2)" }
             : { boxShadow: "1px 1px 5px 0px rgba(0,0,0,0.3)" }
         }
         className={
           props.dark
-            ? "flex flex-col justify-center my-8 pt-5 mx-auto text-white w-[20rem] h-[18rem] bg-white bg-opacity-30 border-3 border-green-100 rounded-xl"
-            : "flex flex-col justify-center my-8 pt-5 mx-auto text-gray-800 w-[20rem] h-[18rem] bg-black bg-opacity-30 border-3 border-green-100 rounded-xl"
+            ? "flex flex-col justify-center pt-5 text-white w-56 h-[22rem] bg-white bg-opacity-30 border border-white border-opacity-10 rounded-xl"
+            : "flex flex-col justify-center pt-5 text-gray-800 w-[20rem] h-[18rem] bg-black bg-opacity-30 border border-white border-opacity-10 rounded-xl"
         }
         onSubmit={handleSubmit}
       >
@@ -95,7 +96,7 @@ export default function Rgb(props) {
             }
             className={`${
               props.dark ? "bg-white" : "bg-black"
-            } bg-opacity-30 relative left-5 bottom-[0.5rem] rounded-lg w-[7rem] h-7 placeholder-opacity-20 focus:outline-none active:outline-none`}
+            } bg-opacity-30 relative left-[6rem] bottom-[0.5rem] rounded-lg w-[7rem] h-7 placeholder-opacity-20 focus:outline-none active:outline-none`}
             type="text"
             placeholder="RGB Value"
             onChange={handleChange}
@@ -107,7 +108,7 @@ export default function Rgb(props) {
         <input
           className={
             props.dark
-              ? "w-32 relative bottom-[3rem] left-[4.5rem] mx-auto border-2 border-gray-300 rounded-bl-2xl text-white h-10 rounded-tr-2xl bg-transparent hover:shadow-xl hover:transition duration-300 ease-in-out focus:outline-none"
+              ? "w-32 relative bottom-[15rem] left-[4.5rem] mx-auto border-2 border-gray-300 rounded-bl-2xl text-white h-10 rounded-tr-2xl bg-transparent hover:shadow-xl hover:transition duration-300 ease-in-out focus:outline-none"
               : "w-32 relative bottom-[3rem] left-[4.5rem] mx-auto border-2 border-gray-700 rounded-bl-2xl h-10 text-gray-800 rounded-tr-2xl bg-transparent hover:shadow-xl hover:transition duration-300 ease-in-out focus:outline-none"
           }
           type="submit"
@@ -120,7 +121,7 @@ export default function Rgb(props) {
           onChange={updateQuery}
         />
       </form>
-      <div className="grid grid-cols-4 ml-7">
+      <>
         {rgbLst.map((rgb2) => {
           return (
             <div>
@@ -190,7 +191,7 @@ export default function Rgb(props) {
             </div>
           );
         })}
-      </div>
-    </div>
+      </>
+    </>
   );
 }
