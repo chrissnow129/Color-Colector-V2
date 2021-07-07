@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Listbox } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/outline";
 import Dark from "../components/DarkSwitch";
-import Grad from "../components/Grad";
 import Rgb from "../components/Rgb";
 import Nav from "../components/Nav";
 import api from "../api";
@@ -133,7 +132,7 @@ export default function Home(props) {
             <div
               className={
                 props.dark
-                  ? "flex flex-col justify-center bg-white max-w-xl bg-opacity-30 bg-clip-padding border-solid border border-white border-opacity-10 backdrop-filter backdrop-blur-lg mx-auto mt-64 w-80 h-64 rounded-xl shadow-md"
+                  ? "flex flex-col justify-center bg-white max-w-xl bg-opacity-30 bg-clip-padding border-solid border border-white border-opacity-10 backdrop-filter backdrop-blur-lg relative top-[18rem] w-80 h-64 rounded-xl shadow-md"
                   : "flex flex-col justify-center bg-black max-w-xl bg-opacity-30 mx-auto mt-64 w-80 h-64 rounded-xl shadow-md"
               }
             >

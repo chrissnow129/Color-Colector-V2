@@ -1,14 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { Listbox } from "@headlessui/react";
+import { Listbox, Dialog } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/outline";
-import Grad from '../components/Grad'
+import { AnimateSharedLayout, motion } from "framer-motion";
 import Nav from "../components/Nav";
 import Dark from "../components/DarkSwitch";
 import api from "../api";
 
 export default function SavedColors(props) {
   const [rgbSaved, setRgbSaved] = useState([]);
+  const [open, setOpen] = useState(false)
+
+  let completeButtonRef = useRef(null)
 
   useEffect(() => {
     // Immediately Invoked Function Expression
@@ -26,7 +29,7 @@ export default function SavedColors(props) {
 
   return (
     <div
-      className="h-screen overflow-auto"
+      className="h-screen overflow-x-hidden"
       style={
         props.dark
           ? {
@@ -85,7 +88,7 @@ export default function SavedColors(props) {
       <div className="grid gap-x-20 grid-cols-4 px-16 mt-48">
         {rgbSaved.map((rgbb) => {
           return (
-            <div key={rgbb.hex}>
+            <div id='key' key={rgbb.hex}>
               <div
                 key={rgbb.hex}
                 style={

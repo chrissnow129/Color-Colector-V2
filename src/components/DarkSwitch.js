@@ -9,7 +9,7 @@ export default function Dark(props) {
           checked={props.dark}
           onChange={props.setDark}
           id="light"
-          className="bg-white w-14 h-14 absolute top-[0.8rem] right-[5.5rem] rounded-full shadow-lg focus:outline-none"
+          className="bg-white w-14 h-14 absolute top-[0.8rem] right-[5.5rem] rounded-full shadow-md focus:outline-none"
           style={{ backgroundColor: "rgba(255,247,231,0.5)" }}
         >
           <svg
